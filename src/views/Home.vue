@@ -1,7 +1,7 @@
 <template>
   <div class="home">
+    <MainPage msg="WELCOME TO MATH KNIGHT"/>
     <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
 
@@ -12,7 +12,7 @@ import MainPage from "@/components/MainPage";
 export default {
   name: 'Home',
   components: {
-    HelloWorld
+    MainPage
   }
 }
 </script>
