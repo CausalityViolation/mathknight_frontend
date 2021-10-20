@@ -1,124 +1,134 @@
 <template>
   <body>
   <div>
-    <h1>How much do you REALLY know about pigs? Let's find out!</h1>
+    <h1>Level 1 - Addition</h1>
   </div>
 
   <div class="quiz">
     <form method="POST" id="quiz">
+
       <ul>
         <li>
-          <h1>Question 1</h1>
-          <p>How much does the average piglet of the breed Swedish Kanonkula weigh?</p>
-
+          <h1>Question 2</h1>
+          <p>What is the sum of 367 and 34?</p>
           <div>
             <input type="radio" name="Question 1 Answer" id="question-1-answer-A" value="A"/>
-            <label for="question-1-answer-A">A) 50kg </label>
+            <label for="question-1-answer-A">A) 401 </label>
           </div>
 
           <div>
             <input type="radio" name="Question 1 Answer" id="question-1-answer-B" value="B"/>
-            <label for="question-1-answer-B">B) 200kg</label>
+            <label for="question-1-answer-B">B) 390</label>
           </div>
 
           <div>
             <input type="radio" name="Question 1 Answer" id="question-1-answer-C" value="C"/>
-            <label for="question-1-answer-C">C) 900kg</label>
+            <label for="question-1-answer-C">C) 350</label>
           </div>
 
           <div>
             <input type="radio" name="Question 1 Answer" id="question-1-answer-D" value="D"/>
-            <label for="question-1-answer-D">D) 2kg</label>
+            <label for="question-1-answer-D">D) 800</label>
           </div>
         </li>
 
         <li>
           <h1>Question 2</h1>
-          <p>How old could a crossbreed between the Saxon Fold and African Mandula potentially get?</p>
+          <p>What is the sum of 1054 and 802?</p>
 
           <div>
             <input type="radio" name="Question 2 Answer" id="question-2-answer-A" value="A"/>
-            <label for="question-2-answer-A">A) 70 years</label>
+            <label for="question-2-answer-A">A) 1753</label>
           </div>
 
           <div>
             <input type="radio" name="Question 2 Answer" id="question-2-answer-B" value="B"/>
-            <label for="question-2-answer-B">B) 2 years</label>
+            <label for="question-2-answer-B">B) 1500</label>
           </div>
 
           <div>
             <input type="radio" name="Question 2 Answer" id="question-2-answer-C" value="C"/>
-            <label for="question-2-answer-C">C) 10 years</label>
+            <label for="question-2-answer-C">C) 1850</label>
           </div>
 
           <div>
             <input type="radio" name="Question 2 Answer" id="question-2-answer-D" value="D"/>
-            <label for="question-2-answer-D">D) 200 years</label>
+            <label for="question-2-answer-D">D) 1856</label>
           </div>
         </li>
 
         <li>
           <h1>Question 3</h1>
-          <p>What is the proper word for a "litter" of piglets?</p>
+          <p>What is the sum of 926 and 92?</p>
 
           <div>
             <input type="radio" name="Question 3 Answer" id="question-3-answer-A" value="A"/>
-            <label for="question-3-answer-A">A) A section</label>
+            <label for="question-3-answer-A">A) 998</label>
           </div>
 
           <div>
             <input type="radio" name="Question 3 Answer" id="question-3-answer-B" value="B"/>
-            <label for="question-3-answer-B">B) A murder</label>
+            <label for="question-3-answer-B">B) 875</label>
           </div>
 
           <div>
             <input type="radio" name="Question 3 Answer" id="question-3-answer-C" value="C"/>
-            <label for="question-3-answer-C">C) A soup</label>
+            <label for="question-3-answer-C">C) 999</label>
           </div>
 
           <div>
             <input type="radio" name="Question 3 Answer" id="question-3-answer-D" value="D"/>
-            <label for="question-3-answer-D">D) A farrow</label>
+            <label for="question-3-answer-D">D) 985</label>
           </div>
         </li>
 
         <li>
           <h1>Question 4</h1>
-          <p>What is the swedish word for pig?</p>
+          <p>What is the sum of 999 and 999?</p>
 
           <div>
             <input type="radio" name="Question 4 Answer" id="question-4-answer-A" value="A"/>
-            <label for="question-4-answer-A">A) Knoa</label>
+            <label for="question-4-answer-A">A) 1999</label>
           </div>
 
           <div>
             <input type="radio" name="Question 4 Answer" id="question-4-answer-B" value="B"/>
-            <label for="question-4-answer-B">B) Gris</label>
+            <label for="question-4-answer-B">B) 1991</label>
           </div>
 
           <div>
             <input type="radio" name="Question 4 Answer" id="question-4-answer-C" value="C"/>
-            <label for="question-4-answer-C">C) Kulting</label>
+            <label for="question-4-answer-C">C) 1993</label>
           </div>
 
           <div>
             <input type="radio" name="Question 4 Answer" id="question-4-answer-D" value="D"/>
-            <label for="question-4-answer-D">D) Svamp</label>
+            <label for="question-4-answer-D">D) 1998</label>
           </div>
         </li>
 
         <li>
           <h1>Question 5</h1>
-          <p>In Japan, pigs are regarded as holy creatures and worshipped as deities. True or false? </p>
+          <p>What is the sum of 541 and 96?</p>
 
           <div>
             <input type="radio" name="Question 5 Answer" id="question-5-answer-A" value="A"/>
-            <label for="question-5-answer-A">A) False</label>
+            <label for="question-5-answer-A">A) 638</label>
           </div>
 
           <div>
             <input type="radio" name="Question 5 Answer" id="question-5-answer-B" value="B"/>
-            <label for="question-5-answer-B">B) True</label>
+            <label for="question-5-answer-B">B) 637</label>
+          </div>
+
+          <div>
+            <input type="radio" name="Question 5 Answer" id="question-5-answer-C" value="C"/>
+            <label for="question-5-answer-C">C) 537</label>
+          </div>
+
+          <div>
+            <input type="radio" name="Question 5 Answer" id="question-5-answer-D" value="D"/>
+            <label for="question-5-answer-D">D) 865</label>
           </div>
         </li>
       </ul>
@@ -202,17 +212,17 @@ export default {
         }
 
       if (this.score === 5) {
-        alert("やるやん！満点！5/5!");
+        alert("Great job！5/5!");
       } else if (this.score === 4) {
-        alert("4/5. 惜しい！もうちょっと頑張れな")
+        alert("Almost had it! 4/5!")
       } else if (this.score === 3) {
-        alert("3/5. まあまあ")
+        alert("Keep on truckin' 3/5")
       } else if (this.score === 2) {
-        alert("2/5. Keep trying!")
+        alert("Keep trying! 2/5")
       } else if (this.score === 1) {
-        alert("1/5. Oof")
+        alert("Practice makes perfect! 1/5")
       } else if (this.score === 0) {
-        alert("0/5.. What")
+        alert("Oof 0/5!")
       }
 
 
@@ -241,14 +251,22 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
+
+body {
+  background-image:url("~@/assets/background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 
 .quiz {
-  text-align: left;
+  text-align: center;
 }
 
 h1 {
-  font-family: "Comic Sans MS", sans-serif;
+  font-family: 'MedievalSharp', cursive;
 }
 
 .submitButton {
@@ -267,5 +285,6 @@ ul {
   list-style-type: none;
   padding: 0;
 }
+
 
 </style>

@@ -3,6 +3,12 @@ import VueRouter from 'vue-router'
 import LoginComponent from "../views/Login.vue"
 import SecureComponent from "../views/Home.vue"
 import RegisterComponent from "../views/Register"
+import QuizList from "../views/quizList"
+import Home from "@/views/Home";
+import quizSubtract from "@/views/quizSubtract";
+import quizDivision from "@/views/quizDivision";
+import quizMultiply from "@/views/quizMultiply";
+import quizAddition from "@/views/quizAddition";
 
 Vue.use(VueRouter)
 
@@ -14,15 +20,12 @@ const routes = [
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
-        component: () => import(/* webpackChunkName: "about" */ '../views/Home.vue')
+        component: Home
     },
     {
         path: '/quiz',
         name: 'quiz',
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
-        component: () => import(/* webpackChunkName: "about" */ '../views/Quiz.vue')
+        component: QuizList
     },
     {
         path: "/login",
@@ -38,7 +41,30 @@ const routes = [
         path: "/register",
         name: "register",
         component: RegisterComponent
+    },
+    {
+        path: "/add",
+        name: "addition",
+        component: quizAddition
+    },
+    {
+        path: "/multiply",
+        name: "multiply",
+        component: quizMultiply
     }
+    ,
+    {
+        path: "/division",
+        name: "division",
+        component: quizDivision
+    },
+    {
+        path: "/subtract",
+        name: "subtract",
+        component: quizSubtract
+    }
+
+
 ]
 
 const router = new VueRouter({

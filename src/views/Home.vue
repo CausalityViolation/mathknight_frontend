@@ -1,6 +1,7 @@
 <template>
-  <div class="home">
-    <MainPage msg="WELCOME TO MATH KNIGHT"/>
+  <div class="home" id="home">
+    <MainPage msg="MATH KNIGHT"/>
+    <MainPage slogan="Math made fun!"/>
     <img alt="Vue logo" src="../assets/logo.png">
   </div>
 </template>
@@ -16,3 +17,4 @@ export default {
   }
 }
 </script>
+
