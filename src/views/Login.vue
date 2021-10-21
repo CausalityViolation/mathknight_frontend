@@ -40,6 +40,7 @@ export default {
     return {
       error: false,
       errorMsg: "",
+      foundUser: false,
       tempStudents: [],
       students: [],
       input: {
@@ -55,7 +56,6 @@ export default {
           return response.json();
         })
         .then((data) => {
-          console.log(data.students);
           this.students = data.students;
         });
   },
@@ -68,28 +68,23 @@ export default {
 
       this.handleJSON();
 
-
         for (let i = 0; i < this.tempStudents.length; i++) {
 
           let obj = this.tempStudents[i];
 
           if (this.input.username === obj.username && this.input.password === obj.password) {
+            this.foundUser = true;
             this.$emit("authenticated", true);
             this.$router.replace({name: "secure"});
           }
-
-          else {
-            this.error = true;
-            this.errorMsg = "Invalid Username and / or Password."
-            this.input.username = "";
-            this.input.password = "";
-          }
-
         }
 
-      this.tempStudents.splice(0);
-
-
+      if(!this.foundUser) {
+        this.error = true;
+        this.errorMsg = "Invalid Username and / or Password."
+        this.input.username = "";
+        this.input.password = "";
+      }
 
     },
     register() {
@@ -114,7 +109,6 @@ export default {
         this.tempStudents.push(tempStudent);
 
       }
-      console.log(this.tempStudents)
     },
   },
 
