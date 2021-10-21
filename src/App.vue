@@ -2,9 +2,9 @@
   <div id="app">
     <router-view @authenticated="setAuthenticated"/>
     <div id="nav">
-      <router-link v-if="authenticated" to="/home">Main | </router-link>
-      <router-link v-if="authenticated" to="/quiz">Quiz | </router-link>
-      <router-link v-if="authenticated" to="/login" v-on:click.native="logout()" replace>Log out</router-link>
+      <router-link v-if="authenticated" to="/home">Main |</router-link>
+      <router-link v-if="authenticated" to="/quiz">Quiz |</router-link>
+      <router-link v-if="authenticated" to="/login" v-on:click.native="logout();" replace>Log out</router-link>
     </div>
 
   </div>
@@ -17,6 +17,7 @@ export default {
   data() {
     return {
       authenticated: false,
+      students: [],
       mockAccount: {
         username: "admin",
         password: "admin"
@@ -24,8 +25,8 @@ export default {
     }
   },
   mounted() {
-    if(!this.authenticated) {
-      this.$router.replace({ name: "login" });
+    if (!this.authenticated) {
+      this.$router.replace({name: "login"});
     }
   },
   methods: {
@@ -34,7 +35,7 @@ export default {
     },
     logout() {
       this.authenticated = false;
-    }
+    },
   }
 }
 </script>
