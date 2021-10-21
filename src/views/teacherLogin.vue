@@ -18,6 +18,7 @@ export default {
   name: 'Login',
   data() {
     return {
+      teachers: [],
       users: [],
       input: {
         username: "",
@@ -27,6 +28,7 @@ export default {
   },
   methods: {
     login() {
+
       if (this.input.username !== "" && this.input.password !== "") {
         if (this.input.username === this.$parent.mockAccount.username && this.input.password === this.$parent.mockAccount.password) {
           this.$emit("authenticated", true);
@@ -49,8 +51,27 @@ export default {
     },
     goBack() {
       this.$router.replace({name: "login"})
+    },
+    // Pseudokod för vad jag vill lyckas med för teacherLogin
+    // Björkman
+    /*
+    parseTeacherLoginInfo(){
+      let teachers = JSON.parse(teachers);
+      let tUsername = teachers.teacherID;
+      let tPassword = teachers.teacherPassword;
     }
+     */
   },
+  mounted() {
+    fetch('http://127.0.0.1:3030/teachers')
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          console.log(data.teachers);
+          this.students = data.teachers;
+        });
+  }
 
 }
 </script>
