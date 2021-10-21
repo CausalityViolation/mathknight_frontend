@@ -1,35 +1,21 @@
 <template>
   <div id="login">
-
-    <MainPage msg="MATH KNIGHT"/>
-    <MainPage slogan="Math made fun!"/>
-    <h1>Student Login</h1>
-    <br>
-    <img alt="Vue logo" src="../assets/logo.png">
-    <br>
-    <br>
+    <h1>Teacher Login</h1>
 
     <form>
-      <input type="text" name="username" v-model="input.username" placeholder="Username" required=""/>
+      <input type="text" name="username" v-model="input.username" placeholder="Teacher ID" required=""/>
       <input type="password" name="password" v-model="input.password" placeholder="Password" required=""/><br><br>
       <button type="button" name="loginButton" v-on:click="login()">Login</button>
-      <button type="button" name="signUpButton" v-on:click="register()">Register</button>
+      <button type="button" name="back" v-on:click="goBack()">Back</button>
       <br><br>
-      <button type="button" name="teacherLogin" v-on:click="teacherLogin()">Teacher Login</button><br><br>
-      <button type="button" name="teacherOverviewTESTTTTTTTTT" v-on:click="teacherOverviewTEST">NEW PAGES TEST BUTTON
-      </button>
     </form>
   </div>
 </template>
 
 <script>
-import MainPage from "@/components/mainPage";
-
 export default {
+
   name: 'Login',
-  components: {
-    MainPage
-  },
   data() {
     return {
       users: [],
@@ -60,6 +46,9 @@ export default {
     },
     teacherOverviewTEST() {
       this.$router.replace({name: "teacherOverview"})
+    },
+    goBack() {
+      this.$router.replace({name: "login"})
     }
   },
 

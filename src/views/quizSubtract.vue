@@ -1,7 +1,7 @@
 <template>
   <body>
   <div>
-    <h1>Level 1 - Addition</h1>
+    <h1>Level 2 - Subtraction</h1>
   </div>
 
   <div class="quiz">
@@ -9,126 +9,126 @@
 
       <ul>
         <li>
-          <h1>Question 2</h1>
-          <p>What is the sum of 367 and 34?</p>
+          <h1>Question 1</h1>
+          <p>What is the difference between 35 and 12?</p>
           <div>
             <input type="radio" name="Question 1 Answer" id="question-1-answer-A" value="A"/>
-            <label for="question-1-answer-A">A) 401 </label>
+            <label for="question-1-answer-A">A) 23 </label>
           </div>
 
           <div>
             <input type="radio" name="Question 1 Answer" id="question-1-answer-B" value="B"/>
-            <label for="question-1-answer-B">B) 390</label>
+            <label for="question-1-answer-B">B) 24</label>
           </div>
 
           <div>
             <input type="radio" name="Question 1 Answer" id="question-1-answer-C" value="C"/>
-            <label for="question-1-answer-C">C) 350</label>
+            <label for="question-1-answer-C">C) 30</label>
           </div>
 
           <div>
             <input type="radio" name="Question 1 Answer" id="question-1-answer-D" value="D"/>
-            <label for="question-1-answer-D">D) 800</label>
+            <label for="question-1-answer-D">D) 21</label>
           </div>
         </li>
 
         <li>
           <h1>Question 2</h1>
-          <p>What is the sum of 1054 and 802?</p>
+          <p>What is the difference between 59 and 46?</p>
 
           <div>
             <input type="radio" name="Question 2 Answer" id="question-2-answer-A" value="A"/>
-            <label for="question-2-answer-A">A) 1753</label>
+            <label for="question-2-answer-A">A) 10</label>
           </div>
 
           <div>
             <input type="radio" name="Question 2 Answer" id="question-2-answer-B" value="B"/>
-            <label for="question-2-answer-B">B) 1500</label>
+            <label for="question-2-answer-B">B) 12</label>
           </div>
 
           <div>
             <input type="radio" name="Question 2 Answer" id="question-2-answer-C" value="C"/>
-            <label for="question-2-answer-C">C) 1850</label>
+            <label for="question-2-answer-C">C) 15</label>
           </div>
 
           <div>
             <input type="radio" name="Question 2 Answer" id="question-2-answer-D" value="D"/>
-            <label for="question-2-answer-D">D) 1856</label>
+            <label for="question-2-answer-D">D) 13</label>
           </div>
         </li>
 
         <li>
           <h1>Question 3</h1>
-          <p>What is the sum of 926 and 92?</p>
+          <p>What is the difference between 99 and 88?</p>
 
           <div>
             <input type="radio" name="Question 3 Answer" id="question-3-answer-A" value="A"/>
-            <label for="question-3-answer-A">A) 998</label>
+            <label for="question-3-answer-A">A) 66</label>
           </div>
 
           <div>
             <input type="radio" name="Question 3 Answer" id="question-3-answer-B" value="B"/>
-            <label for="question-3-answer-B">B) 875</label>
+            <label for="question-3-answer-B">B) 11</label>
           </div>
 
           <div>
             <input type="radio" name="Question 3 Answer" id="question-3-answer-C" value="C"/>
-            <label for="question-3-answer-C">C) 999</label>
+            <label for="question-3-answer-C">C) 12</label>
           </div>
 
           <div>
             <input type="radio" name="Question 3 Answer" id="question-3-answer-D" value="D"/>
-            <label for="question-3-answer-D">D) 985</label>
+            <label for="question-3-answer-D">D) 65</label>
           </div>
         </li>
 
         <li>
           <h1>Question 4</h1>
-          <p>What is the sum of 999 and 999?</p>
+          <p>What is the difference between 8764 and 6547?</p>
 
           <div>
             <input type="radio" name="Question 4 Answer" id="question-4-answer-A" value="A"/>
-            <label for="question-4-answer-A">A) 1999</label>
+            <label for="question-4-answer-A">A) 2009</label>
           </div>
 
           <div>
             <input type="radio" name="Question 4 Answer" id="question-4-answer-B" value="B"/>
-            <label for="question-4-answer-B">B) 1991</label>
+            <label for="question-4-answer-B">B) 2214</label>
           </div>
 
           <div>
             <input type="radio" name="Question 4 Answer" id="question-4-answer-C" value="C"/>
-            <label for="question-4-answer-C">C) 1993</label>
+            <label for="question-4-answer-C">C) 2217</label>
           </div>
 
           <div>
             <input type="radio" name="Question 4 Answer" id="question-4-answer-D" value="D"/>
-            <label for="question-4-answer-D">D) 1998</label>
+            <label for="question-4-answer-D">D) 2158</label>
           </div>
         </li>
 
         <li>
           <h1>Question 5</h1>
-          <p>What is the sum of 541 and 96?</p>
+          <p>What is the difference between -5 and 50?</p>
 
           <div>
             <input type="radio" name="Question 5 Answer" id="question-5-answer-A" value="A"/>
-            <label for="question-5-answer-A">A) 638</label>
+            <label for="question-5-answer-A">A) 50</label>
           </div>
 
           <div>
             <input type="radio" name="Question 5 Answer" id="question-5-answer-B" value="B"/>
-            <label for="question-5-answer-B">B) 637</label>
+            <label for="question-5-answer-B">B) 55</label>
           </div>
 
           <div>
             <input type="radio" name="Question 5 Answer" id="question-5-answer-C" value="C"/>
-            <label for="question-5-answer-C">C) 537</label>
+            <label for="question-5-answer-C">C) -55</label>
           </div>
 
           <div>
             <input type="radio" name="Question 5 Answer" id="question-5-answer-D" value="D"/>
-            <label for="question-5-answer-D">D) 865</label>
+            <label for="question-5-answer-D">D) -50</label>
           </div>
         </li>
       </ul>
@@ -251,7 +251,14 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
+
+body {
+  background-image:url("~@/assets/background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 .quiz {
   text-align: center;

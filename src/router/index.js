@@ -9,6 +9,8 @@ import quizSubtract from "@/views/quizSubtract";
 import quizDivision from "@/views/quizDivision";
 import quizMultiply from "@/views/quizMultiply";
 import quizAddition from "@/views/quizAddition";
+import teacherOverview from "@/views/teacherOverview";
+import teacherLogin from "@/views/teacherLogin";
 
 Vue.use(VueRouter)
 
@@ -62,8 +64,17 @@ const routes = [
         path: "/subtract",
         name: "subtract",
         component: quizSubtract
+    },
+    {
+        path: "/teacher",
+        name: "teacherLogin",
+        component: teacherLogin
+    },
+    {
+        path: "/teacherOverview",
+        name: "teacherOverview",
+        component: teacherOverview
     }
-
 
 ]
 

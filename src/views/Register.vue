@@ -1,11 +1,11 @@
 <template>
   <div id="login">
-    <h1>Register</h1>
+    <h1>Student Registration</h1>
 
     <form>
       <input type="text" name="username" v-model.lazy="newUser.username" placeholder="Username"/>
-      <input type="password" name="password" v-model.lazy="newUser.password" placeholder="Password"/>
-      <button type="button" name="signUpButton" v-on:click="submitForm()">Register</button>
+      <input type="password" name="password" v-model.lazy="newUser.password" placeholder="Password"/><br><br>
+      <button type="button" name="signUpButton" v-on:click="submitForm()">Submit</button>
       <button type="button" name="backButton" v-on:click="returnToMain()">Back</button>
     </form>
 

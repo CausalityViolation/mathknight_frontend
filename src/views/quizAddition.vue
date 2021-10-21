@@ -284,7 +284,7 @@ h1 {
 ul {
   list-style-type: none;
   padding: 0;
+  margin: auto;
 }
-
 
 </style>

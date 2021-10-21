@@ -6,19 +6,21 @@
 }
 
 #login {
+
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     font-family: 'Montserrat', sans-serif;
     height: 100vh;
-    margin: -20px 0 50px;
+
 
 }
 h1 {
     font-weight: bold;
     margin: 0;
     font-family: 'MedievalSharp', cursive;
+    font-size: 50px;
 }
 
 h2 {
@@ -48,7 +50,7 @@ input {
     background-color: #eee;
     border: none;
     padding: 12px 15px;
-    margin: 8px 0;
+    margin: 8px 8px;
     width: 100%;
 
 }
@@ -70,6 +72,9 @@ button {
     letter-spacing: 1px;
     text-transform: uppercase;
     transition: transform 80ms ease-in;
+    margin: 0 10px 0 0;
+    width: 300px;
+
 }
 
 button:active {
@@ -85,6 +90,10 @@ button.ghost {
     border-color: #FFFFFF;
 }
 
+button:hover {
+    cursor: pointer;
+}
+
 footer {
     background-color: #222;
     color: #fff;
@@ -95,6 +104,15 @@ footer {
     right: 0;
     text-align: center;
     z-index: 999;
+}
+
+ul {
+    list-style-type: none;
+}
+
+img{
+    width: 400px;
+    height: auto;
 }
 
 @media (min-width: 768px) {

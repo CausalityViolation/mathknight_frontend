@@ -5,11 +5,9 @@ h1{
     font-family: 'MedievalSharp', cursive;
 }
 h2{
+    margin: -40px 0 40px 0;
     font-size: 40px;
     font-family: 'Dancing Script', cursive;
-}
-h3 {
-    margin: 40px 0 0;
 }
 
 ul {

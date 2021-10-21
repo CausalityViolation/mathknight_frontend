@@ -7,22 +7,27 @@
       <li>
         ADDITION QUIZ<br>
         <button type="button" v-on:click="additionQuiz">Go</button>
+        <br>
       </li>
       <li>
         SUBTRACTION QUIZ<br>
         <button type="button" v-on:click="subtractionQuiz">Go</button>
+        <br>
       </li>
       <li>
         MULTIPLICATION QUIZ<br>
         <button type="button" v-on:click="multiplicationQuiz">Go</button>
+        <br>
       </li>
       <li>
         DIVISION QUIZ<br>
         <button type="button" v-on:click="divisionQuiz">Go</button>
+        <br>
       </li>
       <li>
         MIXED QUIZ<br>
         <button type="button" v-on:click="mixedQuiz">Go</button>
+        <br>
       </li>
     </ul>
   </div>
@@ -30,25 +35,16 @@
 
 <script>
 export default {
-  name: 'Register',
+  name: 'QuizList',
   data() {
-    return {
-      submitted: false,
-      error: false,
-      errorMsg: "",
-      registeredUsers: [],
-      newUser: {
-        username: "",
-        password: ""
-      }
-    }
+    return {}
   },
   methods: {
     additionQuiz() {
       this.$router.replace({name: "addition"});
     },
     subtractionQuiz() {
-      this.$router.replace({name: ""});
+      this.$router.replace({name: "subtract"});
     },
     multiplicationQuiz() {
       this.$router.replace({name: ""});
@@ -61,9 +57,10 @@ export default {
     },
 
 
-
   }
 }
 </script>
 
-<style scoped src="../assets/css/login.css"></style>
+<style scoped src="../assets/css/login.css">
+
+</style>
