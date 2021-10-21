@@ -17,11 +17,6 @@ export default {
   data() {
     return {
       authenticated: false,
-      students: [],
-      mockAccount: {
-        username: "admin",
-        password: "admin"
-      }
     }
   },
   mounted() {

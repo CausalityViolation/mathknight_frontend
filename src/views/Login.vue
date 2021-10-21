@@ -9,7 +9,11 @@
     <br>
     <br>
 
-    <form>
+    <div v-if="error">
+      <p>{{ errorMsg }}</p>
+    </div>
+
+    <form id="loginForm">
       <input type="text" name="username" v-model="input.username" placeholder="Username" required=""/>
       <input type="password" name="password" v-model="input.password" placeholder="Password" required=""/><br><br>
       <button type="button" name="loginButton" v-on:click="login()">Login</button>
@@ -17,9 +21,8 @@
       <br><br>
       <button type="button" name="teacherLogin" v-on:click="teacherLogin()">Teacher Login</button>
       <br><br>
-      <button type="button" name="teacherOverviewTESTTTTTTTTT" v-on:click="teacherOverviewTEST">NEW PAGES TEST BUTTON</button>
-      <button type="button" name="handleJSON" v-on:click="handleJSON">TEST</button>
-
+      <button type="button" name="teacherOverviewTESTTTTTTTTT" v-on:click="teacherOverviewTEST">NEW PAGES TEST BUTTON
+      </button>
     </form>
 
   </div>
@@ -35,8 +38,10 @@ export default {
   },
   data() {
     return {
+      error: false,
+      errorMsg: "",
+      tempStudents: [],
       students: [],
-      stringifiedStudentList: [],
       input: {
         username: "",
         password: ""
@@ -57,16 +62,35 @@ export default {
 
   methods: {
     login() {
-      if (this.input.username !== "" && this.input.password !== "") {
-        if (this.input.username === this.$parent.mockAccount.username && this.input.password === this.$parent.mockAccount.password) {
-          this.$emit("authenticated", true);
-          this.$router.replace({name: "secure"});
-        } else {
-          alert("The username and / or password is incorrect");
+
+      this.error = false;
+      this.submitted = false;
+
+      this.handleJSON();
+
+
+        for (let i = 0; i < this.tempStudents.length; i++) {
+
+          let obj = this.tempStudents[i];
+
+          if (this.input.username === obj.username && this.input.password === obj.password) {
+            this.$emit("authenticated", true);
+            this.$router.replace({name: "secure"});
+          }
+
+          else {
+            this.error = true;
+            this.errorMsg = "Invalid Username and / or Password."
+            this.input.username = "";
+            this.input.password = "";
+          }
+
         }
-      } else {
-        alert("A username and password must be present");
-      }
+
+      this.tempStudents.splice(0);
+
+
+
     },
     register() {
       this.$router.replace({name: "register"});
@@ -80,13 +104,18 @@ export default {
 
     handleJSON() {
 
-      this.stringifiedStudentList.length = 0;
+      for (let i = 0, l = this.students.length; i < l; i++) {
+        let obj = this.students[i];
 
-      let students = JSON.stringify(this.students).replace(/(?![A-Z])./g, '');
+        let tempStudent = {
+          username: obj.studentName, password: obj.studentPassword
+        };
 
-      console.log(students)
+        this.tempStudents.push(tempStudent);
 
-    }
+      }
+      console.log(this.tempStudents)
+    },
   },
 
 }
