@@ -65,7 +65,7 @@ export default {
         }
       }
 
-      if(!this.foundUser) {
+      if (!this.foundUser) {
         this.error = true;
         this.errorMsg = "Invalid Username and / or Password."
         this.input.username = "";
