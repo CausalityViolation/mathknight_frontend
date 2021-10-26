@@ -17,9 +17,8 @@
       <input type="text" name="username" v-model="input.username" placeholder="Username" required=""/>
       <input type="password" name="password" v-model="input.password" placeholder="Password" required=""/><br><br>
       <button type="button" name="loginButton" v-on:click="login()">Login</button>
-      <button type="button" name="signUpButton" v-on:click="register()">Register</button>
+      <button type="button" name="teacherLogin" v-on:click="teacherLogin()">Teachers</button>
       <br><br>
-      <button type="button" name="teacherLogin" v-on:click="teacherLogin()">Teacher Login</button>
       <br><br>
       <button type="button" name="teacherOverviewTESTTTTTTTTT" v-on:click="teacherOverviewTEST">NEW PAGES TEST BUTTON
       </button>
@@ -86,9 +85,6 @@ export default {
         this.input.password = "";
       }
 
-    },
-    register() {
-      this.$router.replace({name: "register"});
     },
     teacherLogin() {
       this.$router.replace({name: "teacherLogin"})

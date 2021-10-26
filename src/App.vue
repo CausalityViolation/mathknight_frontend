@@ -2,8 +2,8 @@
   <div id="app">
     <router-view @authenticated="setAuthenticated"/>
     <div id="nav">
-      <router-link v-if="authenticated" to="/home">Main |</router-link>
-      <router-link v-if="authenticated" to="/quiz">Quiz |</router-link>
+      <router-link v-if="authenticated" to="/home">Main | </router-link>
+      <router-link v-if="authenticated" to="/quiz">Quiz | </router-link>
       <router-link v-if="authenticated" to="/login" v-on:click.native="logout();" replace>Log out</router-link>
     </div>
 
