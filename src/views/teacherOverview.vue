@@ -16,9 +16,34 @@
       <input type="text" name="name" v-model="input.name" placeholder="Student Name"/>
       <input type="text" name="password" v-model="input.password" placeholder="Password"/>
       <input type="text" name="age" v-model="input.age" placeholder="Age"/><br><br>
-      <button type="button" name="addStudent" v-on:click="postToServer"> Add Student</button>
+      <button type="button" name="addStudent" v-on:click="addNewStudentToServer"> Add Student</button>
       <br><br>
     </form>
+
+    <h3>Enter the name of a student to give 1+ points</h3>
+    <form>
+      <input type="text" name="name" v-model="input.studentWhoGetsOnePoint" placeholder="Student Name"/><br><br>
+      <button type="button" name="addPoints" v-on:click="addOnePointToStudentScore">Add point</button>
+    </form>
+    <br><br>
+
+    <h3>Enter the name of a student to RESET his/her points</h3>
+    <form>
+      <input type="text" name="name" v-model="input.studentWhoLosesAllPoints" placeholder="Student Name"/><br><br>
+      <button type="button" name="resetPoints" v-on:click="resetStudentScore">RESET</button>
+    </form>
+    <br><br>
+
+    <h3>Enter a student name to DELETE him/her from the registry</h3>
+    <form>
+      <input type="text" name="name" v-model="input.studentWhoGetsDeleted" placeholder="Student Name"/><br><br>
+      <button type="button" name="deleteStudent" v-on:click="deleteStudent">DELETE</button>
+    </form>
+    <br><br>
+
+    <button type="button" name="refreshServerInfo" v-on:click="getFromServer">Refresh</button>
+
+    <button type="button" name="logout" v-on:click="logout()">Log out</button>
   </div>
 </template>
 
@@ -34,6 +59,9 @@ export default {
     return {
       students: [],
       input: {
+        studentWhoGetsOnePoint: "",
+        studentWhoLosesAllPoints: "",
+        studentWhoGetsDeleted: "",
         name: "",
         password: "",
         age: ""
@@ -53,7 +81,11 @@ export default {
   },
   methods: {
 
-    postToServer() {
+    logout() {
+      this.$router.replace({name: "login"})
+    },
+
+    addNewStudentToServer() {
       const axios = require('axios').default;
       axios.post('http://127.0.0.1:3030/students', {
         studentName: this.input.name,
@@ -71,9 +103,58 @@ export default {
       this.input.password = "";
       this.input.age = "";
 
-      this.getFromServer();
+    },
+    addOnePointToStudentScore() {
+      const axios = require('axios').default;
+      axios.put('http://127.0.0.1:3030/students', {
+        studentName: this.input.studentWhoGetsOnePoint
+      })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+
+      this.input.studentWhoGetsOnePoint = "";
 
     },
+
+    resetStudentScore() {
+      const axios = require('axios').default;
+      axios.put('http://127.0.0.1:3030/students/reset', {
+        studentName: this.input.studentWhoLosesAllPoints
+      })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+
+      this.input.studentWhoLosesAllPoints = "";
+
+    },
+
+    deleteStudent() {
+      const axios = require('axios').default;
+      axios.delete('http://127.0.0.1:3030/students', {
+        data: {
+          studentName: this.input.studentWhoGetsDeleted
+        }
+      })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+
+      this.input.studentWhoGetsDeleted = "";
+
+    },
+
+
     getFromServer() {
       fetch('http://127.0.0.1:3030/students')
           .then((response) => {
@@ -83,8 +164,9 @@ export default {
             console.log(data.students);
             this.students = data.students;
           });
-    }
+    },
   }
+
 }
 
 </script>

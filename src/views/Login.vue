@@ -20,8 +20,6 @@
       <button type="button" name="teacherLogin" v-on:click="teacherLogin()">Teachers</button>
       <br><br>
       <br><br>
-      <button type="button" name="teacherOverviewTESTTTTTTTTT" v-on:click="teacherOverviewTEST">NEW PAGES TEST BUTTON
-      </button>
     </form>
 
   </div>
@@ -88,9 +86,6 @@ export default {
     },
     teacherLogin() {
       this.$router.replace({name: "teacherLogin"})
-    },
-    teacherOverviewTEST() {
-      this.$router.replace({name: "teacherOverview"})
     },
 
     handleJSON() {
