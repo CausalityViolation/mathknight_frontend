@@ -75,7 +75,6 @@ export default {
           return response.json();
         })
         .then((data) => {
-          console.log(data.students);
           this.students = data.students;
         });
   },

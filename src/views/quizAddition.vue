@@ -133,6 +133,8 @@
         </li>
       </ul>
 
+      <button type="button" name="backButton" v-on:click="goBack()">Back</button>
+
       <button v-on:click="calculateScore();" class="submitButton" type="button" value="Submit Answers">
         Submit Answers
       </button>
@@ -244,6 +246,9 @@ export default {
       this.stringifiedAnswers.push(answers.substr(3, 1));
       this.stringifiedAnswers.push(answers.substr(4, 1));
 
+    },
+    goBack() {
+      this.$router.replace({name: "quiz"});
     }
   }
 }
@@ -254,7 +259,7 @@ export default {
 <style scoped>
 
 body {
-  background-image:url("~@/assets/background.jpg");
+  background-image: url("~@/assets/background.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

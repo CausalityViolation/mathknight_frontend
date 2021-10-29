@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <router-view @authenticated="setAuthenticated"/>
-    <div id="nav" v-if="this.$route.path !== '/teacherOverview'">
-      <router-link v-if="authenticated" to="/home">Main |</router-link>
-      <router-link v-if="authenticated" to="/quiz">Quiz |</router-link>
-      <router-link v-if="authenticated" to="/login" v-on:click.native="logout();" replace>Log out</router-link>
+    <router-view/>
+    <div id="nav" v-if="this.$route.path === '/home' || this.$route.path === '/quiz'">
+      <router-link to="/home">Main |</router-link>
+      <router-link to="/quiz">Quiz |</router-link>
+      <router-link to="/login">Log out</router-link>
     </div>
 
   </div>
@@ -15,22 +15,7 @@
 export default {
   name: 'App',
   data() {
-    return {
-      authenticated: false,
-    }
-  },
-  mounted() {
-    if (!this.authenticated) {
-      this.$router.replace({name: "login"});
-    }
-  },
-  methods: {
-    setAuthenticated(status) {
-      this.authenticated = status;
-    },
-    logout() {
-      this.authenticated = false;
-    },
+    return {}
   }
 }
 </script>
