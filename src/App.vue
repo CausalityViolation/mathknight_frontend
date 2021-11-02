@@ -3,8 +3,8 @@
     <router-view/>
     <div id="nav" v-if="this.$route.path === '/home' || this.$route.path === '/quiz'">
       <router-link to="/home">Main |</router-link>
-      <router-link to="/quiz">Quiz |</router-link>
-      <router-link to="/login">Log out</router-link>
+      <router-link to="/quiz"> Quiz |</router-link>
+      <router-link to="/login"> Log out</router-link>
     </div>
 
   </div>
@@ -32,19 +32,58 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  margin: 0 0 55px 0;
 }
 
 #nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 55px;
+  box-shadow: 0 0 3px rgba(0,0,0,0.2);
+  overflow-x: auto;
+  font-family: 'MedievalSharp', cursive;
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
   padding: 30px;
+  border-radius: 20px;
+  border: 1px solid forestgreen;
+  background-color: forestgreen;
+  color: #FFFFFF;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
+  margin: auto;
+
+
+}
+
+#nav:active{
+  transform: scale(0.95);
+}
+
+#nav:focus{
+  outline: none;
+}
+
+#nav.ghost{
+  background-color: transparent;
+  border-color: #FFFFFF;
+}
+#nav:hover{
+  cursor: pointer;
 }
 
 #nav a {
   font-weight: bold;
   color: #2c3e50;
+  text-decoration: none;
 }
 
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+
 
 </style>
