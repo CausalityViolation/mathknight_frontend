@@ -10,7 +10,8 @@
 
       <h1>Question 1</h1>
 
-      <p>What is {{ randomQuestions[0].question }}?<p/>
+      <p>What is {{ randomQuestions[0].question }}?
+      <p/>
 
       <div>
         <input type="text" name="Question 1 Answer" placeholder="Answer"/>
@@ -18,9 +19,8 @@
 
 
       <h1>Question 2</h1>
-      <p>What is {{ randomQuestions[1].question }}?<p/>
-
-
+      <p>What is {{ randomQuestions[1].question }}?
+      <p/>
 
       <div>
         <input type="text" name="Question 2 Answer" placeholder="Answer"/>
@@ -28,9 +28,8 @@
 
 
       <h1>Question 3</h1>
-      <p>What is {{ randomQuestions[2].question }}?<p/>
-
-
+      <p>What is {{ randomQuestions[2].question }}?
+      <p/>
 
       <div>
         <input type="text" name="Question 3 Answer" placeholder="Answer"/>
@@ -38,9 +37,8 @@
 
 
       <h1>Question 4</h1>
-      <p>What is {{ randomQuestions[3].question }}?<p/>
-
-
+      <p>What is {{ randomQuestions[3].question }}?
+      <p/>
 
       <div>
         <input type="text" name="Question 4 Answer" placeholder="Answer"/>
@@ -48,7 +46,8 @@
 
 
       <h1>Question 5</h1>
-      <p>What is {{ randomQuestions[4].question }}?<p/>
+      <p>What is {{ randomQuestions[4].question }}?
+      <p/>
 
 
       <div>
@@ -60,7 +59,8 @@
 
   <br>
   <button type="button" name="backButton" v-on:click="goBack()">Back</button>
-  <button type="button" name="backButton" v-on:click="startQuiz" v-if="showStart">START QUIZ</button>
+  <button type="button" name="startButton" v-on:click="startQuiz" v-if="showStart">START QUIZ</button>
+  <button type="button" name="submitButton" v-if="!showStart">Submit for Scoring</button>
 
   </body>
 </template>
@@ -116,13 +116,15 @@ export default {
         this.randomQuestions.push(randomQuestion);
       }
 
-      for (let i = 0; i <this.randomQuestions.length ; i++) {
+      for (let i = 0; i < this.randomQuestions.length; i++) {
         let obj = this.randomQuestions[i].answer
         this.randomQuestionAnswers.push(obj)
       }
+    },
+
+    calculateScore() {
+
     }
-
-
   }
 }
 
