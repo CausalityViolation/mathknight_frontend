@@ -4,51 +4,56 @@
     <h1>Level 1 - Addition</h1>
   </div>
 
-  <div class="quiz"  v-if="showQuiz">
+  <div class="quiz" v-if="showQuiz">
     <form method="POST" id="quiz">
 
 
-          <h1>Question 1</h1>
-          <p>What is the sum of 367 and 34?</p>
-          <div>
-            <input type="text" name="Question 1 Answer" placeholder="Answer"/>
-          </div>
+      <h1>Question 1</h1>
+
+      <p>What is {{ randomQuestions[0].question }}?<p/>
+
+      <div>
+        <input type="text" name="Question 1 Answer" placeholder="Answer"/>
+      </div>
+
+
+      <h1>Question 2</h1>
+      <p>What is {{ randomQuestions[1].question }}?<p/>
 
 
 
-          <h1>Question 2</h1>
-          <p>What is the sum of 1054 and 802?</p>
-
-          <div>
-            <input type="text" name="Question 2 Answer" placeholder="Answer"/>
-          </div>
+      <div>
+        <input type="text" name="Question 2 Answer" placeholder="Answer"/>
+      </div>
 
 
-
-          <h1>Question 3</h1>
-          <p>What is the sum of 926 and 92?</p>
-
-          <div>
-            <input type="text" name="Question 3 Answer" placeholder="Answer"/>
-          </div>
+      <h1>Question 3</h1>
+      <p>What is {{ randomQuestions[2].question }}?<p/>
 
 
 
-          <h1>Question 4</h1>
-          <p>What is the sum of 999 and 999?</p>
-
-          <div>
-            <input type="text" name="Question 4 Answer" placeholder="Answer"/>
-          </div>
+      <div>
+        <input type="text" name="Question 3 Answer" placeholder="Answer"/>
+      </div>
 
 
+      <h1>Question 4</h1>
+      <p>What is {{ randomQuestions[3].question }}?<p/>
 
-          <h1>Question 5</h1>
-          <p>What is the sum of 541 and 96?</p>
 
-          <div>
-            <input type="text" name="Question 5 Answer" placeholder="Answer"/>
-          </div>
+
+      <div>
+        <input type="text" name="Question 4 Answer" placeholder="Answer"/>
+      </div>
+
+
+      <h1>Question 5</h1>
+      <p>What is {{ randomQuestions[4].question }}?<p/>
+
+
+      <div>
+        <input type="text" name="Question 5 Answer" placeholder="Answer"/>
+      </div>
 
     </form>
   </div>
@@ -70,20 +75,23 @@ export default {
       score: 0,
       rawData: [],
       answers: [],
-      questions: [],
       showQuiz: false,
-      showStart: true
+      showStart: true,
+
+      randomQuestions: [],
+      randomQuestionAnswers: []
     }
   },
 
   mounted() {
-    fetch('http://127.0.0.1:3030/addition/')
+    fetch('http://127.0.0.1:3030/addition')
         .then((response) => {
           return response.json();
         })
         .then((data) => {
-          this.rawData = data.rawData;
+          this.rawData = data.questions;
         });
+
   },
 
   methods: {
@@ -98,17 +106,22 @@ export default {
       this.showQuiz = !this.showQuiz
       this.showStart = !this.showStart
 
-      for (let i = 0; i <this.rawData.length ; i++) {
-        let obj = this.rawData[i];
-        this.answers.push(obj.answer)
+      let randomQuestion;
+
+      for (let i = 0; i < 5; i++) {
+        let random = Math.floor((Math.random() * this.rawData.length));
+
+        randomQuestion = this.rawData[random];
+
+        this.randomQuestions.push(randomQuestion);
       }
 
-      for (let i = 0; i <this.rawData.length ; i++) {
-        let obj = this.rawData[i];
-        this.questions.push(obj.question)
+      for (let i = 0; i <this.randomQuestions.length ; i++) {
+        let obj = this.randomQuestions[i].answer
+        this.randomQuestionAnswers.push(obj)
       }
-
     }
+
 
   }
 }
@@ -131,12 +144,6 @@ body {
 
 h1 {
   font-family: 'MedievalSharp', cursive;
-}
-
-.submitButton {
-  width: auto;
-  height: 2rem;
-  margin: 0 0 2rem 2rem;
 }
 
 ul {
