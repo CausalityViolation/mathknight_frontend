@@ -5,7 +5,7 @@
     <MainPage slogan="Math made fun!"/>
     <h1>Student Login</h1>
     <br>
-    <img alt="Vue logo" src="../assets/logo.png">
+    <img alt="Vue logo" class="logo-home" src="../assets/logo.png">
     <br>
     <br>
 

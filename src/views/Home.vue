@@ -2,7 +2,7 @@
   <div class="home" id="home">
     <MainPage msg="MATH KNIGHT"/>
     <MainPage slogan="Math made fun!"/>
-    <img alt="Vue logo" src="../assets/logo.png">
+    <img alt="Vue logo" class="logo-home" src="../assets/logo.png">
   </div>
 </template>
 
@@ -18,3 +18,9 @@ export default {
 }
 </script>
 
+<style scoped>
+.logo-home{
+  max-width: 100%;
+  height: auto;
+}
+</style>

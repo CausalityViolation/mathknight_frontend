@@ -27,19 +27,22 @@ export default {
 
 <style>
 #app {
+  display: flex;
+  flex-direction: column;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin: 0 0 55px 0;
+  min-height: 100vh;
+
 }
 
 #nav {
-  position: fixed;
+  /* position: fixed; */
   bottom: 0;
-  width: 100%;
-  height: 55px;
+  width: 50%;
+  height: 35px;
   box-shadow: 0 0 3px rgba(0,0,0,0.2);
   overflow-x: auto;
   font-family: 'MedievalSharp', cursive;
@@ -55,6 +58,7 @@ export default {
   text-transform: uppercase;
   transition: transform 80ms ease-in;
   margin: auto;
+  margin-bottom: 0;
 
 
 }
