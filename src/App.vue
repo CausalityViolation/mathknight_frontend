@@ -16,6 +16,10 @@ export default {
   name: 'App',
   data() {
     return {}
+  },
+  mounted () {
+    let root = this.login || '/login'
+    this.$router.push({ path: root, query: { name: 'guest' } });
   }
 }
 </script>
