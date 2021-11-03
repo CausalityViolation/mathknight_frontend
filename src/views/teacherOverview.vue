@@ -20,13 +20,6 @@
       <br><br>
     </form>
 
-    <h3>Enter the name of a student to give 1+ points</h3>
-    <form>
-      <input type="text" name="name" v-model="input.studentWhoGetsOnePoint" placeholder="Student Name"/><br><br>
-      <button type="button" name="addPoints" v-on:click="addOnePointToStudentScore">Add point</button>
-    </form>
-    <br><br>
-
     <h3>Enter the name of a student to RESET his/her points</h3>
     <form>
       <input type="text" name="name" v-model="input.studentWhoLosesAllPoints" placeholder="Student Name"/><br><br>
@@ -59,7 +52,6 @@ export default {
     return {
       students: [],
       input: {
-        studentWhoGetsOnePoint: "",
         studentWhoLosesAllPoints: "",
         studentWhoGetsDeleted: "",
         name: "",
@@ -101,21 +93,6 @@ export default {
       this.input.name = "";
       this.input.password = "";
       this.input.age = "";
-
-    },
-    addOnePointToStudentScore() {
-      const axios = require('axios').default;
-      axios.put('http://127.0.0.1:3030/students', {
-        studentName: this.input.studentWhoGetsOnePoint
-      })
-          .then(function (response) {
-            console.log(response);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-
-      this.input.studentWhoGetsOnePoint = "";
 
     },
 

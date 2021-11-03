@@ -71,6 +71,7 @@ export default {
 
           if (this.input.username === obj.username && this.input.password === obj.password) {
             this.foundUser = true;
+            this.$root.currentlyLoggedInUser = this.input.username;
             this.$emit("authenticated", true);
             this.$router.replace({name: "secure"});
           }

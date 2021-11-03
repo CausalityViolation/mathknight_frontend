@@ -5,6 +5,10 @@ import router from './router'
 Vue.config.productionTip = false
 
 new Vue({
+  data: {
+  currentlyLoggedInUser: ""
+  },
+
   router,
   render: h => h(App)
 }).$mount('#app')

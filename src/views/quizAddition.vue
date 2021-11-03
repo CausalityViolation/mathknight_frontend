@@ -14,7 +14,7 @@
       <p/>
 
       <div>
-        <input type="text" name="Question 1 Answer" placeholder="Answer"/>
+        <input type="text" name="Question 1 Answer" placeholder="Answer" v-model="input.answer1"/>
       </div>
 
 
@@ -23,7 +23,7 @@
       <p/>
 
       <div>
-        <input type="text" name="Question 2 Answer" placeholder="Answer"/>
+        <input type="text" name="Question 2 Answer" placeholder="Answer" v-model="input.answer2"/>
       </div>
 
 
@@ -32,7 +32,7 @@
       <p/>
 
       <div>
-        <input type="text" name="Question 3 Answer" placeholder="Answer"/>
+        <input type="text" name="Question 3 Answer" placeholder="Answer" v-model="input.answer3"/>
       </div>
 
 
@@ -41,7 +41,7 @@
       <p/>
 
       <div>
-        <input type="text" name="Question 4 Answer" placeholder="Answer"/>
+        <input type="text" name="Question 4 Answer" placeholder="Answer" v-model="input.answer4"/>
       </div>
 
 
@@ -51,7 +51,7 @@
 
 
       <div>
-        <input type="text" name="Question 5 Answer" placeholder="Answer"/>
+        <input type="text" name="Question 5 Answer" placeholder="Answer" v-model="input.answer5"/>
       </div>
 
     </form>
@@ -60,23 +60,39 @@
   <br>
   <button type="button" name="backButton" v-on:click="goBack()">Back</button>
   <button type="button" name="startButton" v-on:click="startQuiz" v-if="showStart">START QUIZ</button>
-  <button type="button" name="submitButton" v-if="!showStart">Submit for Scoring</button>
+  <button type="button" name="submitButton" v-if="showSubmit" v-on:click="calculateScore">Submit for Scoring</button>
+
+  <p>Score:</p>
+  {{ score }}
+  <p>Logged in as:</p>
+  {{currentUser}}
 
   </body>
 </template>
 
 <script>
 
-
 export default {
   name: "Quiz",
   data: function () {
     return {
+      currentUser: this.$root.currentlyLoggedInUser,
       score: 0,
       rawData: [],
       answers: [],
       showQuiz: false,
       showStart: true,
+      showSubmit: false,
+
+      input: {
+
+        answer1: "",
+        answer2: "",
+        answer3: "",
+        answer4: "",
+        answer5: ""
+
+      },
 
       randomQuestions: [],
       randomQuestionAnswers: []
@@ -105,6 +121,7 @@ export default {
 
       this.showQuiz = !this.showQuiz
       this.showStart = !this.showStart
+      this.showSubmit = true;
 
       let randomQuestion;
 
@@ -120,10 +137,46 @@ export default {
         let obj = this.randomQuestions[i].answer
         this.randomQuestionAnswers.push(obj)
       }
+
+      console.log(this.randomQuestionAnswers)
     },
 
     calculateScore() {
 
+      if (this.input.answer1 == this.randomQuestionAnswers[0]) {
+        this.score++;
+      }
+      if (this.input.answer2 == this.randomQuestionAnswers[1]) {
+        this.score++;
+      }
+      if (this.input.answer3 == this.randomQuestionAnswers[2]) {
+        this.score++;
+      }
+      if (this.input.answer4 == this.randomQuestionAnswers[3]) {
+        this.score++;
+      }
+      if (this.input.answer5 == this.randomQuestionAnswers[4]) {
+        this.score++;
+      }
+
+      this.showSubmit = false;
+      this.addPointsToStudent();
+
+    },
+
+    addPointsToStudent(){
+
+      const axios = require('axios').default;
+      axios.put('http://127.0.0.1:3030/students', {
+        studentName: this.currentUser,
+        studentScore: this.score
+      })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
     }
   }
 }
