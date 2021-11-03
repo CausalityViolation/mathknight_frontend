@@ -1,9 +1,11 @@
 <template>
   <div>
     <h1>This is where our main quiz page will be.</h1>
-    <p>Navigate quiz, see your high score</p>
+
 
     <ul>
+      <li>Navigate quiz, see your high score</li>
+      <br>
       <li>
         ADDITION QUIZ<br>
         <button type="button" v-on:click="additionQuiz">Go</button>
