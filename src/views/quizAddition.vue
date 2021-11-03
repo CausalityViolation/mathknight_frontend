@@ -65,7 +65,10 @@
   <p>Score:</p>
   {{ score }}
   <p>Logged in as:</p>
-  {{currentUser}}
+  {{ currentUser }}
+
+  <p v-if="showQuiz">Time Left:
+  {{timerCount}}</p>
 
   </body>
 </template>
@@ -76,6 +79,7 @@ export default {
   name: "Quiz",
   data: function () {
     return {
+
       currentUser: this.$root.currentlyLoggedInUser,
       score: 0,
       rawData: [],
@@ -83,6 +87,8 @@ export default {
       showQuiz: false,
       showStart: true,
       showSubmit: false,
+
+      timerCount: "",
 
       input: {
 
@@ -96,6 +102,27 @@ export default {
 
       randomQuestions: [],
       randomQuestionAnswers: []
+    }
+  },
+
+  watch: {
+
+    timerCount: {
+      handler(value) {
+
+        if (value > 0) {
+          setTimeout(() => {
+            this.timerCount--;
+          }, 1000);
+        }
+
+        if (value === 0) {
+          alert("Time's up! Auto-Submitting Score!")
+          this.calculateScore()
+        }
+
+      },
+      immediate: true
     }
   },
 
@@ -119,6 +146,7 @@ export default {
 
     startQuiz() {
 
+      this.timerCount = 10;
       this.showQuiz = !this.showQuiz
       this.showStart = !this.showStart
       this.showSubmit = true;
@@ -164,7 +192,7 @@ export default {
 
     },
 
-    addPointsToStudent(){
+    addPointsToStudent() {
 
       const axios = require('axios').default;
       axios.put('http://127.0.0.1:3030/students', {
@@ -178,7 +206,7 @@ export default {
             console.log(error);
           });
     }
-  }
+  },
 }
 
 
