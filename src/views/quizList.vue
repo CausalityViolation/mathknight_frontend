@@ -7,27 +7,34 @@
       <li>Navigate quiz, see your high score</li>
       <br>
       <li>
+        <br>
         ADDITION QUIZ<br>
         <button type="button" v-on:click="additionQuiz">Go</button>
         <br>
       </li>
       <li>
+        <br>
         SUBTRACTION QUIZ<br>
         <button type="button" v-on:click="subtractionQuiz">Go</button>
         <br>
       </li>
       <li>
+        <br>
         MULTIPLICATION QUIZ<br>
         <button type="button" v-on:click="multiplicationQuiz">Go</button>
         <br>
       </li>
       <li>
+        <br>
         DIVISION QUIZ<br>
         <button type="button" v-on:click="divisionQuiz">Go</button>
         <br>
       </li>
       <li>
-        MIXED QUIZ<br>
+        <br>
+        <br>
+        <br>
+        ACHIEVEMENTS<br>
         <button type="button" v-on:click="mixedQuiz">Go</button>
         <br>
       </li>
@@ -49,15 +56,11 @@ export default {
       this.$router.replace({name: "subtract"});
     },
     multiplicationQuiz() {
-      this.$router.replace({name: ""});
+      this.$router.replace({name: "multiply"});
     },
     divisionQuiz() {
-      this.$router.replace({name: ""});
+      this.$router.replace({name: "division"});
     },
-    mixedQuiz() {
-      this.$router.replace({name: ""});
-    },
-
 
   }
 }

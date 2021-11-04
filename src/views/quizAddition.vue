@@ -146,7 +146,7 @@ export default {
 
     startQuiz() {
 
-      this.timerCount = 10;
+      this.timerCount = 60;
       this.showQuiz = !this.showQuiz
       this.showStart = !this.showStart
       this.showSubmit = true;
