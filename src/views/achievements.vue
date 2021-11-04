@@ -1,43 +1,49 @@
 <template>
   <div class="achievement" id="achievement">
-    <h1>Achievements: </h1>
-
+    <h1>{{ currentUser }}'s Achievements:</h1>
+    <p>{{ currentUser }}'s total score: {{ studentScore }} </p>
+    <button type="button" name="back" v-on:click="goBack()">Back</button>
   </div>
 </template>
+
 <script>
+
+
 export default {
   name: "achievements",
   data: function () {
     return {
       currentUser: this.$root.currentlyLoggedInUser,
       studentScore: 0,
+      studentName: [],
       students: []
     }
   },
+
   mounted() {
     fetch('http://127.0.0.1:3030/students')
         .then((response) => {
           return response.json();
         })
         .then((data) => {
-          this.rawData = data.students;
-        });
+          this.students = data.students;
+        })
+        .then(() => this.showScoreForCurrentUser())
 
   },
   methods: {
+
+    goBack() {
+      this.$router.replace({name: "quiz"});
+    },
+
     showScoreForCurrentUser() {
 
-      /*
-      for (let i = 0; i < this.students.length; i++) {
-        let obj = this.students[i].studentName;
 
-        for (let j = 0; j < obj.length; j++) {
-          if (obj === this.currentUser) {
+      let currentScore = this.students.find(x => x.studentName === this.currentUser).studentScore
 
-          }
-        }
-      }
-      */
+      console.log(currentScore)
+      this.studentScore = currentScore;
 
     }
 
