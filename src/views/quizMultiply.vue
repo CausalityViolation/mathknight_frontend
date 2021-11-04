@@ -7,6 +7,7 @@
   <div className="quiz" v-if="showQuiz">
     <form method="POST" id="quiz">
 
+      asdasd
 
       <h1>Question 1</h1>
 
