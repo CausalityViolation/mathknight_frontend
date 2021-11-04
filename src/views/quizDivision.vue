@@ -4,7 +4,7 @@
     <h1>Level 4 - Division</h1>
   </div>
 
-  <div className="quiz" v-if="showQuiz">
+  <div class="quiz" v-if="showQuiz">
     <form method="POST" id="quiz">
 
 
@@ -60,12 +60,15 @@
   <br>
   <button type="button" name="backButton" v-on:click="goBack()">Back</button>
   <button type="button" name="startButton" v-on:click="startQuiz" v-if="showStart">START QUIZ</button>
-  <button type="button" name="submitButton" v-if="showSubmit" v-on:click="calculateScore">Submit for Scoring</button>
+  <button type="button" name="submitButton" v-if="showSubmit" v-on:click="calculateScore">Submit</button>
 
-  <p>Score:</p>
-  {{ score }}
-  <p>Logged in as:</p>
-  {{ currentUser }}
+  <p v-if="showQuiz" id="score">Score:<br>
+    {{ score }}
+  </p>
+
+  <p id="loggedInUser">Logged in as: <br>
+    {{ currentUser }}
+  </p>
 
   <p v-if="showQuiz">Time Left:
     {{ timerCount }}</p>
@@ -212,27 +215,6 @@ export default {
 
 </script>
 
-<style scoped>
-
-body {
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-
-.quiz {
-  text-align: center;
-}
-
-h1 {
-  font-family: 'MedievalSharp', cursive;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-  margin: auto;
-}
+<style scoped src="../assets/css/quiz.css">
 
 </style>

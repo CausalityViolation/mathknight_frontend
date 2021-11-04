@@ -26,6 +26,11 @@ export default {
 
 
 <style>
+
+body{
+  background: linear-gradient(#1F1C2C, #928DAB) no-repeat center;
+}
+
 #app {
   display: flex;
   flex-direction: column;
@@ -33,9 +38,8 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: white;
   min-height: 100vh;
-
 }
 
 #nav {
@@ -86,7 +90,7 @@ export default {
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+  color: white;
 }
 
 

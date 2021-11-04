@@ -1,11 +1,10 @@
 <template>
   <div>
-    <h1>This is where our main quiz page will be.</h1>
+    <h1>Quiz List</h1>
 
 
     <ul>
-      <li>Navigate quiz, see your high score</li>
-      <br>
+      <li>Select the Quiz you'd like to try or show your achievements</li>
       <li>
         <br>
         ADDITION QUIZ<br>
@@ -35,7 +34,7 @@
         <br>
         <br>
         ACHIEVEMENTS<br>
-        <button type="button" v-on:click="mixedQuiz">Go</button>
+        <button type="button" v-on:click="achievementsPage">Go</button>
         <br>
       </li>
     </ul>
@@ -61,7 +60,9 @@ export default {
     divisionQuiz() {
       this.$router.replace({name: "division"});
     },
-
+    achievementsPage() {
+      this.$router.replace({name: "achievements"});
+    }
   }
 }
 </script>
