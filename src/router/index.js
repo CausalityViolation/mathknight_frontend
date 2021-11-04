@@ -11,6 +11,7 @@ import quizMultiply from "@/views/quizMultiply";
 import quizAddition from "@/views/quizAddition";
 import teacherOverview from "@/views/teacherOverview";
 import teacherLogin from "@/views/teacherLogin";
+import achievements from "@/views/achievements";
 
 Vue.use(VueRouter)
 
@@ -71,6 +72,11 @@ const routes = [
         path: "/teacherOverview",
         name: "teacherOverview",
         component: teacherOverview
+    },
+    {
+        path: "/achievements",
+        name: "achievements",
+        component: achievements
     }
 
 ]
