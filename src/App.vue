@@ -47,7 +47,6 @@ body{
   bottom: 0;
   width: 50%;
   height: 35px;
-  box-shadow: 0 0 3px rgba(0,0,0,0.2);
   overflow-x: auto;
   font-family: 'MedievalSharp', cursive;
   text-align: center;
@@ -63,6 +62,7 @@ body{
   transition: transform 80ms ease-in;
   margin: auto;
   margin-bottom: 0;
+  box-shadow: 0 10px 14px -7px black;
 
 
 }

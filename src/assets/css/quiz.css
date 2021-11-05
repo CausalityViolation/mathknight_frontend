@@ -4,6 +4,7 @@ body {
     background-size: cover;
     padding-bottom: 2rem;
     border-radius: 1rem;
+    background-image: url("../background.jpg");
 }
 
 .quiz {
@@ -12,6 +13,24 @@ body {
 
 h1 {
     font-family: 'MedievalSharp', cursive;
+    text-shadow: black 0 0 10px;
+}
+
+p{
+    text-shadow: black 0 0 10px;
+    font-size: 25px;
+}
+
+#score{
+    padding-top: 1rem;
+    padding-right: 0.8rem;
+    font-size: 20px;
+}
+
+h1 span{
+    background-color: #ffffff10;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
 ul {
@@ -19,7 +38,6 @@ ul {
     padding: 0;
     margin: auto;
 }
-
 
 
 button {
@@ -37,6 +55,7 @@ button {
     width: 200px;
     height: 50px;
     font-family: 'MedievalSharp', cursive;
+    box-shadow: 0 10px 14px -7px black;
 
 }
 
