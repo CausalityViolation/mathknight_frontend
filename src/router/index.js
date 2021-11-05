@@ -2,7 +2,6 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import LoginComponent from "../views/Login.vue"
 import SecureComponent from "../views/Home.vue"
-import RegisterComponent from "../views/Register"
 import QuizList from "../views/quizList"
 import Home from "@/views/Home";
 import quizSubtract from "@/views/quizSubtract";
@@ -36,11 +35,6 @@ const routes = [
         path: "/home",
         name: "secure",
         component: SecureComponent
-    },
-    {
-        path: "/register",
-        name: "register",
-        component: RegisterComponent
     },
     {
         path: "/add",

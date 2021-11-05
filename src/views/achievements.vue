@@ -1,8 +1,13 @@
 <template>
   <div class="achievement" id="achievement">
     <h1>{{ currentUser }}'s Achievements:</h1>
-    <p>{{ currentUser }}'s total score: {{ studentScore }} </p>
+    <p>Your total score: {{ studentScore }} </p>
     <button type="button" name="back" v-on:click="goBack()">Back</button>
+
+    <p id="loggedInUser">Logged in as: <br>
+      {{ currentUser }}
+    </p>
+
   </div>
 </template>
 
@@ -39,14 +44,14 @@ export default {
 
     showScoreForCurrentUser() {
 
-
-      let currentScore = this.students.find(x => x.studentName === this.currentUser).studentScore
-
-      console.log(currentScore)
-      this.studentScore = currentScore;
+      this.studentScore = this.students.find(x => x.studentName === this.currentUser).studentScore;
 
     }
 
   }
 }
 </script>
+
+<style scoped src="../assets/css/quiz.css">
+
+</style>

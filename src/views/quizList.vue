@@ -38,14 +38,22 @@
         <br>
       </li>
     </ul>
+
+    <p id="loggedInUser">Logged in as: <br>
+      {{ currentUser }}
+    </p>
+
   </div>
+
 </template>
 
 <script>
 export default {
   name: 'QuizList',
   data() {
-    return {}
+    return {
+      currentUser: this.$root.currentlyLoggedInUser
+    }
   },
   methods: {
     additionQuiz() {

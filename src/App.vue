@@ -28,7 +28,7 @@ export default {
 <style>
 
 body{
-  background: linear-gradient(#1F1C2C, #928DAB) no-repeat center;
+  background: linear-gradient(#1F1C2C, #69667a) no-repeat center;
 }
 
 #app {

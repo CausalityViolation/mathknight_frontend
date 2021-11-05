@@ -61,7 +61,7 @@
   <button type="button" name="startButton" v-on:click="startQuiz" v-if="showStart">START QUIZ</button>
   <button type="button" name="submitButton" v-if="showSubmit" v-on:click="calculateScore">Submit</button>
 
-  <p v-if="showQuiz" id="score">Score:<br>
+  <p v-if="showScore" id="score">Score:<br>
     {{ score }}
   </p>
 
@@ -89,6 +89,7 @@ export default {
       showQuiz: false,
       showStart: true,
       showSubmit: false,
+      showScore: false,
 
       timerCount: "",
 
@@ -191,6 +192,7 @@ export default {
 
       this.showSubmit = false;
       this.addPointsToStudent();
+      this.showScore = true;
 
     },
 
