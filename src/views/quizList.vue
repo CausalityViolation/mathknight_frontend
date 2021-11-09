@@ -2,7 +2,7 @@
   <div>
     <h1>Quiz List</h1>
 
-
+    <p>Collect points to unlock more Quiz!</p>
     <ul>
       <li>Select the Quiz you'd like to try or show your achievements</li>
       <li>
@@ -11,19 +11,19 @@
         <button type="button" v-on:click="additionQuiz">Go</button>
         <br>
       </li>
-      <li>
+      <li v-if="userScore>=10">
         <br>
         SUBTRACTION QUIZ<br>
         <button type="button" v-on:click="subtractionQuiz">Go</button>
         <br>
       </li>
-      <li>
+      <li v-if="userScore>=20">
         <br>
         MULTIPLICATION QUIZ<br>
         <button type="button" v-on:click="multiplicationQuiz">Go</button>
         <br>
       </li>
-      <li>
+      <li v-if="userScore>=30">
         <br>
         DIVISION QUIZ<br>
         <button type="button" v-on:click="divisionQuiz">Go</button>
@@ -52,7 +52,8 @@ export default {
   name: 'QuizList',
   data() {
     return {
-      currentUser: this.$root.currentlyLoggedInUser
+      currentUser: this.$root.currentlyLoggedInUser,
+      userScore: ""
     }
   },
   methods: {
@@ -70,7 +71,23 @@ export default {
     },
     achievementsPage() {
       this.$router.replace({name: "achievements"});
+    },
+    unlockQuizForUser() {
+
+      this.userScore = this.students.find(x => x.studentName === this.currentUser).studentScore;
+
     }
+  },
+
+  mounted() {
+    fetch('http://127.0.0.1:3030/students')
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          this.students = data.students;
+        })
+        .then(() => this.unlockQuizForUser())
   }
 }
 </script>

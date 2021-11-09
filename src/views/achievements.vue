@@ -1,7 +1,9 @@
 <template>
   <div class="achievement" id="achievement">
-    <h1>{{ currentUser }}'s Achievements:</h1>
-    <p>Your total score: {{ studentScore }} </p>
+    <h1>{{ currentUser }}'s Achievements</h1>
+    <p>Total answered questions: {{ answeredQuestions }}</p>
+    <p>Your total score: {{ studentScore }}</p>
+    <p>Total incorrect answers: {{ studentWrongAnsQ }} </p>
     <button type="button" name="back" v-on:click="goBack()">Back</button>
 
     <p id="loggedInUser">Logged in as: <br>
@@ -19,7 +21,11 @@ export default {
   data: function () {
     return {
       currentUser: this.$root.currentlyLoggedInUser,
+      answeredQuestions: 0,
       studentScore: 0,
+      studentAnsQ: 0,
+      studentWrongAnsQ: 0,
+      percentageWrong: "",
       studentName: [],
       students: []
     }
@@ -33,7 +39,7 @@ export default {
         .then((data) => {
           this.students = data.students;
         })
-        .then(() => this.showScoreForCurrentUser())
+        .then(() => this.showStatsForCurrentUser())
 
   },
   methods: {
@@ -42,11 +48,13 @@ export default {
       this.$router.replace({name: "quiz"});
     },
 
-    showScoreForCurrentUser() {
+    showStatsForCurrentUser() {
 
       this.studentScore = this.students.find(x => x.studentName === this.currentUser).studentScore;
+      this.answeredQuestions = this.students.find(x => x.studentName === this.currentUser).studentAnsQ;
+      this.studentWrongAnsQ = this.students.find(x => x.studentName === this.currentUser).studentWrongAns;
 
-    }
+    },
 
   }
 }

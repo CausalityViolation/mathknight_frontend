@@ -87,6 +87,8 @@ export default {
       score: 0,
       rawData: [],
       answers: [],
+      answeredQuestions: 0,
+      wrongAnswers: 0,
       showQuiz: false,
       showStart: true,
       showSubmit: false,
@@ -169,31 +171,68 @@ export default {
         let obj = this.randomQuestions[i].answer
         this.randomQuestionAnswers.push(obj)
       }
-
-      console.log(this.randomQuestionAnswers)
     },
 
     calculateScore() {
 
       if (this.input.answer1 == this.randomQuestionAnswers[0]) {
         this.score++;
+        this.answeredQuestions++;
+      } else if (this.input.answer1 != this.randomQuestionAnswers[0] && this.input.answer1 != "") {
+        this.wrongAnswers++
+        this.answeredQuestions++;
+      } else {
+        this.wrongAnswers++
       }
+
       if (this.input.answer2 == this.randomQuestionAnswers[1]) {
         this.score++;
+        this.answeredQuestions++;
+      } else if (this.input.answer1 != this.randomQuestionAnswers[1] && this.input.answer2 != "") {
+        this.wrongAnswers++
+        this.answeredQuestions++;
+      } else {
+        this.wrongAnswers++
       }
+
       if (this.input.answer3 == this.randomQuestionAnswers[2]) {
         this.score++;
+        this.answeredQuestions++;
+      } else if (this.input.answer1 != this.randomQuestionAnswers[2] && this.input.answer3 != "") {
+        this.wrongAnswers++
+        this.answeredQuestions++;
+      } else {
+        this.wrongAnswers++
       }
+
       if (this.input.answer4 == this.randomQuestionAnswers[3]) {
         this.score++;
+        this.answeredQuestions++;
+      } else if (this.input.answer1 != this.randomQuestionAnswers[3] && this.input.answer4 != "") {
+        this.wrongAnswers++
+        this.answeredQuestions++;
+      } else {
+        this.wrongAnswers++
       }
+
       if (this.input.answer5 == this.randomQuestionAnswers[4]) {
         this.score++;
+        this.answeredQuestions++;
+      } else if (this.input.answer1 != this.randomQuestionAnswers[4] && this.input.answer5 != "") {
+        this.wrongAnswers++
+        this.answeredQuestions++;
+      } else {
+        this.wrongAnswers++
       }
 
       this.showSubmit = false;
       this.addPointsToStudent();
+      this.addAnsQToStudent();
+      this.addWrongAnsQToStudent();
       this.showScore = true;
+      this.showQuiz = false;
+
+      console.log(this.wrongAnswers)
 
     },
 
@@ -210,9 +249,41 @@ export default {
           .catch(function (error) {
             console.log(error);
           });
+    },
+
+    addAnsQToStudent() {
+
+      const axios = require('axios').default;
+      axios.put('http://127.0.0.1:3030/students/achi', {
+        studentName: this.currentUser,
+        studentAnsQ: this.answeredQuestions
+      })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+    },
+
+    addWrongAnsQToStudent() {
+
+      const axios = require('axios').default;
+      axios.put('http://127.0.0.1:3030/students/wrong', {
+        studentName: this.currentUser,
+        studentWrongAns: this.wrongAnswers
+      })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
     }
   },
 }
+
+
 
 
 </script>
