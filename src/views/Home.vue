@@ -34,6 +34,12 @@ export default {
   height: auto;
 }
 
+p{
+  font-family: 'MedievalSharp', cursive;
+  text-shadow: black 0 0 10px;
+  font-size: 20px;
+}
+
 @media (min-width: 768px) {
 
   #loggedInUser{

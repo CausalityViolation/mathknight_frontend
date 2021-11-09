@@ -7,7 +7,9 @@
 
       <li v-for="student in students" v-bind:key="student.studentName">
         | {{ student.studentName }} Score:
-        {{ student.studentScore }} Age:
+         {{ student.studentScore }} Correct Answers:
+        {{ student.studentAnsQ }} Wrong Answers:
+        {{ student.studentWrongAns }} Age:
         {{ student.studentAge }} |
       </li>
     </ul>

@@ -17,6 +17,7 @@ h1 {
 }
 
 p{
+    font-family: 'MedievalSharp', cursive;
     text-shadow: black 0 0 10px;
     font-size: 25px;
 }
