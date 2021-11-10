@@ -7,11 +7,15 @@
 
       <li v-for="student in students" v-bind:key="student.studentName">
         | {{ student.studentName }} Score:
-         {{ student.studentScore }} Correct Answers:
+        {{ student.studentScore }} Correct Answers:
         {{ student.studentAnsQ }} Wrong Answers:
         {{ student.studentWrongAns }} Age:
         {{ student.studentAge }} |
       </li>
+    </ul>
+
+    <ul>
+      <li>{{ replyMessage }}</li>
     </ul>
 
     <form id="loginForm">
@@ -36,8 +40,6 @@
     </form>
     <br><br>
 
-    <button type="button" name="refreshServerInfo" v-on:click="getFromServer">Refresh</button>
-
     <button type="button" name="logout" v-on:click="logout()">Log out</button>
   </div>
 </template>
@@ -53,6 +55,8 @@ export default {
   data: function () {
     return {
       students: [],
+      replyMessage: "",
+      errorCode: "",
       input: {
         studentWhoLosesAllPoints: "",
         studentWhoGetsDeleted: "",
@@ -79,22 +83,33 @@ export default {
     },
 
     addNewStudentToServer() {
+
+      if (this.input.name == "" || this.input.password || "" || this.input.age == "") {
+        this.replyMessage = "Please fill out all the fields before submitting."
+      }
+
       const axios = require('axios').default;
       axios.post('http://127.0.0.1:3030/students', {
         studentName: this.input.name,
         studentPassword: this.input.password,
         studentAge: this.input.age
       })
-          .then(function (response) {
-            console.log(response);
+          .then((response) => {
+            this.replyMessage = JSON.stringify(response.data);
+
+            if (this.replyMessage.includes("success")) {
+              this.replyMessage = "Student successfully added to Database"
+            }
           })
           .catch(function (error) {
             console.log(error);
-          });
+          })
+          .then(() => this.getFromServer())
 
       this.input.name = "";
       this.input.password = "";
       this.input.age = "";
+
 
     },
 
@@ -102,16 +117,10 @@ export default {
       const axios = require('axios').default;
       axios.put('http://127.0.0.1:3030/students/reset', {
         studentName: this.input.studentWhoLosesAllPoints
-      })
-          .then(function (response) {
-            console.log(response);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+      }).then(() => this.getFromServer())
 
       this.input.studentWhoLosesAllPoints = "";
-
+      this.replyMessage = "";
     },
 
     deleteStudent() {
@@ -121,14 +130,13 @@ export default {
           studentName: this.input.studentWhoGetsDeleted
         }
       })
-          .then(function (response) {
-            console.log(response);
-          })
           .catch(function (error) {
             console.log(error);
-          });
+          })
+          .then(() => this.getFromServer())
 
       this.input.studentWhoGetsDeleted = "";
+      this.replyMessage = "";
 
     },
 
@@ -139,7 +147,6 @@ export default {
             return response.json();
           })
           .then((data) => {
-            console.log(data.students);
             this.students = data.students;
           });
     },
