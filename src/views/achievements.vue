@@ -14,8 +14,11 @@
       <img v-if="this.$root.maxPointsAddition" src="../assets/additionAchi.jpeg">
       <img v-if="this.$root.maxPointsSubtraction" src="../assets/subtractionAchi.jpeg">
       <img v-if="this.$root.maxPointsMultiplication" src="../assets/multiplicationAchi.jpg">
-      <img v-if="this.$root.maxPointsDivision" src="../assets/additionAchi.jpeg">
+      <img v-if="this.$root.maxPointsDivision" src="../assets/DivisionAchi.jpg">
+      <img id="gif" v-if="this.$root.allCompleted" src="../assets/allComplete.gif">
     </div>
+
+
     <br>
 
     <button type="button" name="back" v-on:click="goBack()">Back</button>
@@ -70,6 +73,10 @@ export default {
       this.studentWrongAnsQ = this.students.find(x => x.studentName === this.currentUser).studentWrongAns;
 
       this.percentage = Math.round((this.studentScore / this.answeredQuestions) * 100) + "%";
+
+      if(this.$root.maxPointsAddition == true && this.$root.maxPointsSubtraction == true && this.$root.maxPointsMultiplication == true && this.$root.maxPointsDivision == true ) {
+        this.$root.allCompleted = true;
+      }
 
     },
 

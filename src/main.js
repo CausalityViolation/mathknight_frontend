@@ -10,7 +10,8 @@ new Vue({
         maxPointsAddition: false,
         maxPointsSubtraction: false,
         maxPointsMultiplication: false,
-        maxPointsDivision: false
+        maxPointsDivision: false,
+        allCompleted: false
     },
 
     router,
