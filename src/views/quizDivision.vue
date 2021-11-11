@@ -78,6 +78,7 @@
 
 <script>
 
+
 export default {
   name: "Quiz",
   data: function () {
@@ -141,7 +142,7 @@ export default {
         })
         .then((data) => {
           this.rawData = data.questions;
-        });
+        }).then(() => this.getFromServer());
 
   },
 
@@ -258,6 +259,26 @@ export default {
           .catch(function (error) {
             console.log(error);
           });
+    },
+    addAchiPointsToStudent() {
+
+      this.achiPoints = this.students.find(x => x.studentName === this.currentUser).studentAchiPoints;
+
+      if (this.achiPoints === 3) {
+        this.achiPoints++
+
+        const axios = require('axios').default;
+        axios.put('http://127.0.0.1:3030/students/achiPoints', {
+          studentName: this.currentUser,
+          studentAchiPoints: this.achiPoints
+        })
+            .then(function (response) {
+              console.log(response);
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+      }
     },
 
     addAnsQToStudent() {
