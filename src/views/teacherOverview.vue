@@ -26,7 +26,7 @@
       <br><br>
     </form>
 
-    <h3>Enter the name of a student to RESET his/her points</h3>
+    <h3>Enter the name of a student to RESET all of his/her stats</h3>
     <form>
       <input type="text" name="name" v-model="input.studentWhoLosesAllPoints" placeholder="Student Name"/><br><br>
       <button type="button" name="resetPoints" v-on:click="resetStudentScore">RESET</button>
