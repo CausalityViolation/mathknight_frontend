@@ -8,16 +8,22 @@
     <br>
 
 
-    <h1>Unlocked Achievements:</h1><br>
+    <h1>Unlocked Achievements:</h1>
+
+    <p>Accumulated achievement points:<br>
+      {{ achiPoints }}</p>
 
     <div id="imgBox">
-      <img v-if="this.$root.maxPointsAddition" src="../assets/additionAchi.jpeg">
-      <img v-if="this.$root.maxPointsSubtraction" src="../assets/subtractionAchi.jpeg">
-      <img v-if="this.$root.maxPointsMultiplication" src="../assets/multiplicationAchi.jpg">
-      <img v-if="this.$root.maxPointsDivision" src="../assets/DivisionAchi.jpg">
-      <img id="gif" v-if="this.$root.allCompleted" src="../assets/allComplete.gif">
+      <img v-if="this.achiPoints >= 1" src="../assets/additionAchi.jpeg">
+      <img v-if="this.achiPoints >= 2" src="../assets/subtractionAchi.jpeg">
+      <img v-if="this.achiPoints >= 3" src="../assets/multiplicationAchi.jpg">
+      <img v-if="this.achiPoints >= 4" src="../assets/DivisionAchi.jpg">
+      <img id="gif" v-if="this.achiPoints > 4" src="../assets/allComplete.gif">
     </div>
 
+
+    <br>
+    <button v-if="this.achiPoints = 4" type="button" name="doomsdayQuiz">HIDDEN QUIZ</button>
 
     <br>
 
@@ -38,6 +44,7 @@ export default {
   data: function () {
     return {
       currentUser: this.$root.currentlyLoggedInUser,
+      achiPoints: 0,
       answeredQuestions: 0,
       studentScore: 0,
       studentAnsQ: 0,
@@ -71,12 +78,10 @@ export default {
       this.studentScore = this.students.find(x => x.studentName === this.currentUser).studentScore;
       this.answeredQuestions = this.students.find(x => x.studentName === this.currentUser).studentAnsQ;
       this.studentWrongAnsQ = this.students.find(x => x.studentName === this.currentUser).studentWrongAns;
+      this.achiPoints = this.students.find(x => x.studentName === this.currentUser).studentAchiPoints;
+
 
       this.percentage = Math.round((this.studentScore / this.answeredQuestions) * 100) + "%";
-
-      if(this.$root.maxPointsAddition == true && this.$root.maxPointsSubtraction == true && this.$root.maxPointsMultiplication == true && this.$root.maxPointsDivision == true ) {
-        this.$root.allCompleted = true;
-      }
 
     },
 

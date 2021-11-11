@@ -87,8 +87,10 @@ export default {
       score: 0,
       rawData: [],
       answers: [],
+      students: [],
       answeredQuestions: 0,
       wrongAnswers: 0,
+      achiPoints: 0,
       showQuiz: false,
       showStart: true,
       showSubmit: false,
@@ -237,6 +239,10 @@ export default {
       this.showQuiz = false;
       this.timerCount = "";
 
+      if (this.score == 5) {
+        this.addAchiPointsToStudent()
+      }
+
     },
 
     addPointsToStudent() {
@@ -282,11 +288,18 @@ export default {
           .catch(function (error) {
             console.log(error);
           });
+    },
+    getFromServer() {
+      fetch('http://127.0.0.1:3030/students')
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            this.students = data.students;
+          })
     }
   },
 }
-
-
 
 
 </script>

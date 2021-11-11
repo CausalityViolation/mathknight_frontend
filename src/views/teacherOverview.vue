@@ -10,7 +10,8 @@
         {{ student.studentScore }} Correct Answers:
         {{ student.studentAnsQ }} Wrong Answers:
         {{ student.studentWrongAns }} Age:
-        {{ student.studentAge }} |
+        {{ student.studentAge }} Achievement points:
+        {{student.studentAchiPoints}} |
       </li>
     </ul>
 

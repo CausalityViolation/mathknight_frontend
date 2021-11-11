@@ -7,7 +7,6 @@
   <div class="quiz" v-if="showQuiz">
     <form method="POST" id="quiz">
 
-
       <h1>Question 1</h1>
 
       <p>What is {{ randomQuestions[0].question }}?
@@ -87,8 +86,10 @@ export default {
       score: 0,
       rawData: [],
       answers: [],
+      students: [],
       answeredQuestions: 0,
       wrongAnswers: 0,
+      achiPoints: 0,
       showQuiz: false,
       showStart: true,
       showSubmit: false,
@@ -133,14 +134,14 @@ export default {
   },
 
   mounted() {
+
     fetch('http://127.0.0.1:3030/addition')
         .then((response) => {
           return response.json();
         })
         .then((data) => {
-          this.rawData = data.questions;
-        });
-
+          this.rawData = data.questions
+        }).then(() => this.getFromServer())
   },
 
   methods: {
@@ -225,10 +226,6 @@ export default {
         this.wrongAnswers++
       }
 
-      if (this.score == 5) {
-        this.$root.maxPointsAddition = true;
-      }
-
       this.showSubmit = false;
       this.addPointsToStudent();
       this.addAnsQToStudent();
@@ -237,7 +234,12 @@ export default {
       this.showQuiz = false;
       this.timerCount = "";
 
+      if (this.score == 5) {
+        this.addAchiPointsToStudent()
+      }
+
     },
+
 
     addPointsToStudent() {
 
@@ -252,6 +254,27 @@ export default {
           .catch(function (error) {
             console.log(error);
           });
+    },
+
+    addAchiPointsToStudent() {
+
+      this.achiPoints = this.students.find(x => x.studentName === this.currentUser).studentAchiPoints;
+
+      if (this.achiPoints === 0) {
+        this.achiPoints++
+
+        const axios = require('axios').default;
+        axios.put('http://127.0.0.1:3030/students/achiPoints', {
+          studentName: this.currentUser,
+          studentAchiPoints: this.achiPoints
+        })
+            .then(function (response) {
+              console.log(response);
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+      }
     },
 
     addAnsQToStudent() {
@@ -282,7 +305,18 @@ export default {
           .catch(function (error) {
             console.log(error);
           });
+    },
+
+    getFromServer() {
+      fetch('http://127.0.0.1:3030/students')
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            this.students = data.students;
+          })
     }
+
   },
 }
 

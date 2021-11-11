@@ -7,11 +7,6 @@ Vue.config.productionTip = false
 new Vue({
     data: {
         currentlyLoggedInUser: "",
-        maxPointsAddition: false,
-        maxPointsSubtraction: false,
-        maxPointsMultiplication: false,
-        maxPointsDivision: false,
-        allCompleted: false
     },
 
     router,

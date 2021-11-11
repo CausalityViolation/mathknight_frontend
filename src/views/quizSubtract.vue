@@ -226,10 +226,6 @@ export default {
         this.wrongAnswers++
       }
 
-      if (this.score == 5) {
-        this.$root.maxPointsSubtraction = true;
-      }
-
       this.showSubmit = false;
       this.addPointsToStudent();
       this.addAnsQToStudent();
@@ -286,7 +282,6 @@ export default {
     }
   },
 }
-
 
 
 </script>
