@@ -11,19 +11,20 @@
     <h1>Unlocked Achievements:</h1>
 
     <p>Accumulated achievement points:<br>
-      {{ achiPoints }}</p>
+      {{ points }}</p>
+
 
     <div id="imgBox">
-      <img v-if="this.achiPoints >= 1" src="../assets/additionAchi.jpeg">
-      <img v-if="this.achiPoints >= 2" src="../assets/subtractionAchi.jpeg">
-      <img v-if="this.achiPoints >= 3" src="../assets/multiplicationAchi.jpg">
-      <img v-if="this.achiPoints >= 4" src="../assets/DivisionAchi.jpg">
-      <img id="gif" v-if="this.achiPoints > 4" src="../assets/allComplete.gif">
+      <img v-if="this.points >= 1" src="../assets/additionAchi.jpeg">
+      <img v-if="this.points >= 2" src="../assets/subtractionAchi.jpeg">
+      <img v-if="this.points >= 3" src="../assets/multiplicationAchi.jpg">
+      <img v-if="this.points >= 4" src="../assets/DivisionAchi.jpg">
+      <img id="gif" v-if="this.points >= 5" src="../assets/allComplete.gif">
     </div>
-
+    <br>
 
     <br>
-    <button v-if="this.achiPoints = 4" type="button" name="doomsdayQuiz">HIDDEN QUIZ</button>
+    <button v-if="this.points === 4" type="button" name="doomsdayQuiz" v-on:click="goToDoom()">HIDDEN QUIZ</button>
 
     <br>
 
@@ -44,7 +45,6 @@ export default {
   data: function () {
     return {
       currentUser: this.$root.currentlyLoggedInUser,
-      achiPoints: 0,
       answeredQuestions: 0,
       studentScore: 0,
       studentAnsQ: 0,
@@ -57,6 +57,7 @@ export default {
   },
 
   mounted() {
+
     fetch('http://127.0.0.1:3030/students')
         .then((response) => {
           return response.json();
@@ -73,12 +74,16 @@ export default {
       this.$router.replace({name: "quiz"});
     },
 
+    goToDoom() {
+      this.$router.replace({name: "hiddenQuiz"});
+    },
+
     showStatsForCurrentUser() {
 
+      this.points = this.students.find(x => x.studentName === this.currentUser).studentAchiPoints;
       this.studentScore = this.students.find(x => x.studentName === this.currentUser).studentScore;
       this.answeredQuestions = this.students.find(x => x.studentName === this.currentUser).studentAnsQ;
       this.studentWrongAnsQ = this.students.find(x => x.studentName === this.currentUser).studentWrongAns;
-      this.achiPoints = this.students.find(x => x.studentName === this.currentUser).studentAchiPoints;
 
 
       this.percentage = Math.round((this.studentScore / this.answeredQuestions) * 100) + "%";

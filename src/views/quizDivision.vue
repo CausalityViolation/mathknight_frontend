@@ -79,6 +79,7 @@
 <script>
 
 
+
 export default {
   name: "Quiz",
   data: function () {
@@ -228,9 +229,6 @@ export default {
         this.wrongAnswers++
       }
 
-      if (this.score == 5) {
-        this.$root.maxPointsDivision = true;
-      }
 
       this.showSubmit = false;
       this.addPointsToStudent();
@@ -262,15 +260,15 @@ export default {
     },
     addAchiPointsToStudent() {
 
-      this.achiPoints = this.students.find(x => x.studentName === this.currentUser).studentAchiPoints;
+      let points = this.students.find(s => s.studentName === this.currentUser).studentAchiPoints;
 
-      if (this.achiPoints === 3) {
-        this.achiPoints++
+      if (points === 3) {
+        points++
 
         const axios = require('axios').default;
         axios.put('http://127.0.0.1:3030/students/achiPoints', {
           studentName: this.currentUser,
-          studentAchiPoints: this.achiPoints
+          studentAchiPoints: points
         })
             .then(function (response) {
               console.log(response);
@@ -278,6 +276,7 @@ export default {
             .catch(function (error) {
               console.log(error);
             });
+
       }
     },
 

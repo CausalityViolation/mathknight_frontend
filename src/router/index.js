@@ -11,6 +11,7 @@ import quizAddition from "@/views/quizAddition";
 import teacherOverview from "@/views/teacherOverview";
 import teacherLogin from "@/views/teacherLogin";
 import achievements from "@/views/achievements";
+import hiddenQuiz from "@/views/hiddenQuiz";
 
 Vue.use(VueRouter)
 
@@ -71,6 +72,11 @@ const routes = [
         path: "/achievements",
         name: "achievements",
         component: achievements
+    },
+    {
+        path: "/doom",
+        name: "hiddenQuiz",
+        component: hiddenQuiz
     }
 
 ]
