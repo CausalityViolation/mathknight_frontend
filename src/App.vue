@@ -2,13 +2,15 @@
   <div id="app">
     <router-view/>
     <div id="nav" v-if="this.$route.path === '/home' || this.$route.path === '/quiz'">
+      |
       <router-link to="/home">Main</router-link>
       |
       <router-link to="/quiz"> Quiz</router-link>
+      |
     </div>
 
     <div v-if="this.$route.path === '/home' || this.$route.path === '/quiz'">
-      <button id="logoutButton" v-on:click="stopMusic"> Log out</button>
+      <button id="logoutButton" v-on:click="stopMusic"> Log out </button>
     </div>
 
   </div>
@@ -72,8 +74,7 @@ body {
   letter-spacing: 1px;
   text-transform: uppercase;
   transition: transform 80ms ease-in;
-  margin: auto;
-  margin-bottom: 0;
+  margin: 35px auto 0 auto;
   box-shadow: 0 10px 14px -7px black;
 
 

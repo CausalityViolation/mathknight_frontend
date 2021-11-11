@@ -28,7 +28,7 @@
   <button type="button" name="submitButton" v-if="showSubmit" v-on:click="calculateScore">Submit</button>
 
 
-  <p v-if="!chungus" id="loggedInUser">Logged in as: <br>
+  <p v-if="!hideName" id="loggedInUser">Logged in as: <br>
     {{ currentUser }}
   </p>
 
@@ -53,6 +53,7 @@ export default {
       showStart: true,
       showSubmit: false,
       chungus: false,
+      hideName: false,
       timerCount: "",
       message: "",
       pass: "",
@@ -172,10 +173,12 @@ export default {
 
       if (this.input.answer1 == "causality") {
         this.pass = true;
+        this.hideName = true;
         this.message = "Congratulations! You've unlocked all achievements and completed every quiz. You should be proud!"
       } else {
         this.pass = false;
         this.chungus = true;
+        this.hideName = true;
         this.message = "It appears you weren't ready after all. Go back to the beginning and practice some more!" +
             " All of your achievements and score will now RESET."
       }
