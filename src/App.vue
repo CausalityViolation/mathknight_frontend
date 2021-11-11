@@ -2,9 +2,13 @@
   <div id="app">
     <router-view/>
     <div id="nav" v-if="this.$route.path === '/home' || this.$route.path === '/quiz'">
-      <router-link to="/home">Main |</router-link>
-      <router-link to="/quiz"> Quiz |</router-link>
-      <router-link to="/login"> Log out</router-link>
+      <router-link to="/home">Main</router-link>
+      |
+      <router-link to="/quiz"> Quiz</router-link>
+    </div>
+
+    <div v-if="this.$route.path === '/home' || this.$route.path === '/quiz'">
+      <button id="logoutButton" v-on:click="stopMusic"> Log out</button>
     </div>
 
   </div>
@@ -17,9 +21,17 @@ export default {
   data() {
     return {}
   },
-  mounted () {
+  mounted() {
     let root = this.login || '/login'
-    this.$router.push({ path: root, query: { name: 'guest' } });
+    this.$router.push({path: root, query: {name: 'guest'}});
+  },
+
+  methods: {
+    stopMusic() {
+      this.$root.theme.pause()
+      this.$router.replace({name: "login"});
+
+    }
   }
 }
 </script>
@@ -27,7 +39,7 @@ export default {
 
 <style>
 
-body{
+body {
   background: linear-gradient(#1F1C2C, #69667a) no-repeat center;
 }
 
@@ -45,7 +57,7 @@ body{
 #nav {
   /* position: fixed; */
   bottom: 0;
-  width: 50%;
+  width: 30%;
   height: 35px;
   overflow-x: auto;
   font-family: 'MedievalSharp', cursive;
@@ -67,19 +79,20 @@ body{
 
 }
 
-#nav:active{
+#nav:active {
   transform: scale(0.95);
 }
 
-#nav:focus{
+#nav:focus {
   outline: none;
 }
 
-#nav.ghost{
+#nav.ghost {
   background-color: transparent;
   border-color: #FFFFFF;
 }
-#nav:hover{
+
+#nav:hover {
   cursor: pointer;
 }
 
@@ -91,6 +104,49 @@ body{
 
 #nav a.router-link-exact-active {
   color: white;
+}
+
+button {
+  border-radius: 20px;
+  border: 1px solid forestgreen;
+  background-color: forestgreen;
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 45px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
+  margin: 0 10px 0 0;
+  width: 300px;
+  box-shadow: 0 10px 14px -7px black;
+
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+button:focus {
+  outline: none;
+}
+
+button.ghost {
+  background-color: transparent;
+  border-color: #FFFFFF;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+#logoutButton {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: auto;
+  height: 80px;
+  font-size: 20px;
+  font-family: 'MedievalSharp', cursive;
 }
 
 

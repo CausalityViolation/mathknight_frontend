@@ -54,14 +54,14 @@ export default {
         })
         .then((data) => {
           this.students = data.students;
-        });
+        })
+
   },
 
   methods: {
     login() {
 
       this.error = false;
-      this.submitted = false;
 
       this.handleJSON();
 
@@ -74,6 +74,7 @@ export default {
             this.$root.currentlyLoggedInUser = this.input.username;
             this.$emit("authenticated", true);
             this.$router.replace({name: "secure"});
+            this.playTheme()
           }
         }
 
@@ -102,6 +103,10 @@ export default {
 
       }
     },
+    playTheme(){
+      this.$root.theme.volume = 0.1;
+      this.$root.theme.play()
+    }
   },
 
 }

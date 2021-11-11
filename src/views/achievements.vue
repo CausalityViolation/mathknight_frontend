@@ -76,6 +76,7 @@ export default {
 
     goToDoom() {
       this.$router.replace({name: "hiddenQuiz"});
+      this.$root.theme.pause()
     },
 
     showStatsForCurrentUser() {

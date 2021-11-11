@@ -28,7 +28,7 @@
   <button type="button" name="submitButton" v-if="showSubmit" v-on:click="calculateScore">Submit</button>
 
 
-  <p id="loggedInUser">Logged in as: <br>
+  <p v-if="!chungus" id="loggedInUser">Logged in as: <br>
     {{ currentUser }}
   </p>
 
@@ -56,6 +56,10 @@ export default {
       timerCount: "",
       message: "",
       pass: "",
+      audio: new Audio(require("../assets/hiddenTheme.mp3")),
+      jaws: new Audio(require("../assets/jaws.mp3")),
+      victory: new Audio(require("../assets/fanfare.mp3")),
+      fail: new Audio(require("../assets/fail.mp3")),
 
       input: {
 
@@ -75,8 +79,55 @@ export default {
           }, 1000);
         }
 
+        if (value <= 50) {
+          document.getElementById("timer").style.fontSize = "30px";
+        }
+
+        if (value <= 40) {
+          document.getElementById("timer").style.fontSize = "35px";
+        }
+
+        if (value <= 30) {
+          document.getElementById("timer").style.fontSize = "40px";
+        }
+
+        if (value <= 20) {
+          document.getElementById("timer").style.fontSize = "45px";
+        }
+
+        if (value <= 10) {
+          document.getElementById("timer").style.fontSize = "60px";
+          document.getElementById("timer").style.color = "red";
+        }
+
+        if (value <= 9) {
+          document.getElementById("timer").style.color = "white";
+        }
+        if (value <= 8) {
+          document.getElementById("timer").style.color = "red";
+        }
+        if (value <= 7) {
+          document.getElementById("timer").style.color = "white";
+        }
+        if (value <= 6) {
+          document.getElementById("timer").style.color = "red";
+        }
+        if (value <= 5) {
+          document.getElementById("timer").style.color = "white";
+        }
+        if (value <= 4) {
+          document.getElementById("timer").style.color = "red";
+        }
+        if (value <= 3) {
+          document.getElementById("timer").style.color = "white";
+        }
+        if (value <= 2) {
+          document.getElementById("timer").style.color = "red";
+        }
+        if (value <= 1) {
+          document.getElementById("timer").style.color = "white";
+        }
         if (value === 0) {
-          alert("Time's up. SUBJECT FAILED. RESETTING ALL PROGRESS.")
           this.calculateScore()
         }
 
@@ -86,33 +137,38 @@ export default {
   },
 
   mounted() {
-
-    fetch('http://127.0.0.1:3030/addition')
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          this.rawData = data.questions
-        }).then(() => this.getFromServer())
+    this.getFromServer()
+    this.jaws.volume = 0.5
+    this.jaws.play()
   },
 
   methods: {
 
     goBack() {
       this.$router.replace({name: "achievements"});
+      this.fail.pause()
+      this.jaws.pause()
+      this.$root.theme.play()
     },
 
 
     startQuiz() {
 
+      this.jaws.pause();
       this.timerCount = 60;
       this.showQuiz = true;
       this.showStart = !this.showStart
       this.showSubmit = true;
+      this.audio.volume = 0.1
+      this.audio.play();
 
     },
 
     calculateScore() {
+
+      document.getElementById("timer").style.fontSize = "20px";
+      document.getElementById("loggedInUser").style.fontSize = "20px";
+      this.audio.pause()
 
       if (this.input.answer1 == "causality") {
         this.pass = true;
@@ -131,8 +187,12 @@ export default {
 
       if (this.pass) {
         this.addAchiPointsToStudent()
+        this.victory.volume = 0.1
+        this.victory.play()
       } else {
         this.doomsDayDeletion()
+        this.fail.volume = 0.1
+        this.fail.play()
       }
 
     },
