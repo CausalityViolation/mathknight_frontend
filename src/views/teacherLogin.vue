@@ -6,9 +6,11 @@
       <p>{{ errorMsg }}</p>
     </div>
 
-    <form id="loginForm">
-      <input type="text" name="username" v-model="input.username" placeholder="Teacher ID"/>
-      <input type="password" name="password" v-model="input.password" placeholder="Password"/><br><br>
+    <form>
+      <div id="textBox">
+        <input type="text" name="username" v-model="input.username" placeholder="Teacher ID"/>
+        <input type="password" name="password" v-model="input.password" placeholder="Password"/><br><br>
+      </div>
       <button type="button" name="loginButton" v-on:click="login()">Login</button>
       <button type="button" name="back" v-on:click="goBack()">Back</button>
       <br><br>
@@ -25,6 +27,7 @@ export default {
   data() {
     return {
       error: false,
+      wrongInput: new Audio(require("../assets/wrongLogin.mp3")),
       errorMsg: "",
       foundUser: false,
       tempTeachers: [],
@@ -50,7 +53,6 @@ export default {
     login() {
 
       this.error = false;
-      this.submitted = false;
 
       this.handleJSON();
 
@@ -59,6 +61,10 @@ export default {
         let obj = this.tempTeachers[i];
 
         if (this.input.username === obj.username && this.input.password === obj.password) {
+
+          this.$root.buttonSound.volume = 0.2
+          this.$root.buttonSound.play()
+
           this.foundUser = true;
           this.$emit("authenticated", true);
           this.$router.replace({name: "teacherOverview"});
@@ -66,6 +72,10 @@ export default {
       }
 
       if (!this.foundUser) {
+
+        this.wrongInput.volume = 0.2;
+        this.wrongInput.play();
+
         this.error = true;
         this.errorMsg = "Invalid Username and / or Password."
         this.input.username = "";
@@ -78,6 +88,8 @@ export default {
     },
 
     goBack() {
+      this.$root.buttonSound.volume = 0.2
+      this.$root.buttonSound.play()
       this.$router.replace({name: "login"})
     },
 

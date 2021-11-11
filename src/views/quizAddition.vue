@@ -147,11 +147,16 @@ export default {
   methods: {
 
     goBack() {
+      this.$root.buttonSound.volume = 0.2
+      this.$root.buttonSound.play()
       this.$router.replace({name: "quiz"});
     },
 
 
     startQuiz() {
+
+      this.$root.buttonSound.volume = 0.2
+      this.$root.buttonSound.play()
 
       this.timerCount = 60;
       this.showQuiz = !this.showQuiz
@@ -175,6 +180,9 @@ export default {
     },
 
     calculateScore() {
+
+      this.$root.buttonSound.volume = 0.2
+      this.$root.buttonSound.play()
 
       if (this.input.answer1 == this.randomQuestionAnswers[0]) {
         this.score++;

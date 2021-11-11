@@ -2,15 +2,13 @@
   <div id="app">
     <router-view/>
     <div id="nav" v-if="this.$route.path === '/home' || this.$route.path === '/quiz'">
-      |
-      <router-link to="/home">Main</router-link>
-      |
-      <router-link to="/quiz"> Quiz</router-link>
-      |
+      <button v-on:click="goToHome">Main</button>
+      <button v-on:click="goToQuiz"> Quiz</button>
+      <button v-on:click="stopMusic"> Log out </button>
     </div>
 
     <div v-if="this.$route.path === '/home' || this.$route.path === '/quiz'">
-      <button id="logoutButton" v-on:click="stopMusic"> Log out </button>
+
     </div>
 
   </div>
@@ -30,9 +28,21 @@ export default {
 
   methods: {
     stopMusic() {
+      this.$root.buttonSound.volume = 0.2
+      this.$root.buttonSound.play()
       this.$root.theme.pause()
       this.$router.replace({name: "login"});
+    },
 
+    goToQuiz() {
+      this.$root.buttonSound.volume = 0.2
+      this.$root.buttonSound.play()
+      this.$router.replace({name: "quiz"});
+    },
+    goToHome() {
+      this.$root.buttonSound.volume = 0.2
+      this.$root.buttonSound.play()
+      this.$router.replace({name: "home"});
     }
   }
 }
@@ -60,7 +70,7 @@ body {
   /* position: fixed; */
   bottom: 0;
   width: 30%;
-  height: 35px;
+  height: auto;
   overflow-x: auto;
   font-family: 'MedievalSharp', cursive;
   text-align: center;
@@ -68,8 +78,8 @@ body {
   font-weight: bold;
   padding: 30px;
   border-radius: 20px;
-  border: 1px solid forestgreen;
-  background-color: forestgreen;
+  border: 1px solid #69667a;
+  background-color: #1F1C2C;
   color: #FFFFFF;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -78,10 +88,6 @@ body {
   box-shadow: 0 10px 14px -7px black;
 
 
-}
-
-#nav:active {
-  transform: scale(0.95);
 }
 
 #nav:focus {
@@ -108,20 +114,21 @@ body {
 }
 
 button {
+  font-family: 'MedievalSharp', cursive;
   border-radius: 20px;
-  border: 1px solid forestgreen;
+  border: 1px solid darkgreen;
   background-color: forestgreen;
   color: #FFFFFF;
-  font-size: 12px;
+  font-size: 30px;
   font-weight: bold;
   padding: 12px 45px;
   letter-spacing: 1px;
   text-transform: uppercase;
   transition: transform 80ms ease-in;
-  margin: 0 10px 0 0;
+  margin: 20px 10px 0 0;
   width: 300px;
+  height: 100px;
   box-shadow: 0 10px 14px -7px black;
-
 }
 
 button:active {
@@ -141,13 +148,41 @@ button:hover {
   cursor: pointer;
 }
 
-#logoutButton {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  width: auto;
-  height: 80px;
-  font-size: 20px;
-  font-family: 'MedievalSharp', cursive;
+@media (min-width: 1025px) {
+
+  #nav{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    order: 3;
+    justify-content: space-evenly;
+  }
+
+  button {
+    width: 200px;
+    height: 100px;
+    margin: auto 5px auto 5px;
+  }
+}
+
+@media (max-width: 1024px) {
+
+  #nav{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    order: 3;
+    justify-content: space-evenly;
+    width: auto;
+  }
+
+  button {
+    width: auto;
+    height: auto;
+    font-size: 20px;
+    margin: auto 5px auto 5px;
+  }
+
 }
 
 

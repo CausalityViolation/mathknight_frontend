@@ -146,6 +146,8 @@ export default {
   methods: {
 
     goBack() {
+      this.$root.buttonSound.volume = 0.2
+      this.$root.buttonSound.play()
       this.$router.replace({name: "achievements"});
       this.fail.pause()
       this.jaws.pause()
@@ -154,6 +156,9 @@ export default {
 
 
     startQuiz() {
+
+      this.$root.buttonSound.volume = 0.2
+      this.$root.buttonSound.play()
 
       this.jaws.pause();
       this.timerCount = 60;
@@ -166,6 +171,9 @@ export default {
     },
 
     calculateScore() {
+
+      this.$root.buttonSound.volume = 0.2
+      this.$root.buttonSound.play()
 
       document.getElementById("timer").style.fontSize = "20px";
       document.getElementById("loggedInUser").style.fontSize = "20px";

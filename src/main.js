@@ -7,7 +7,8 @@ Vue.config.productionTip = false
 new Vue({
     data: {
         currentlyLoggedInUser: "",
-        theme: new Audio(require("../src/assets/theme.mp3"))
+        theme: new Audio(require("../src/assets/theme.mp3")),
+        buttonSound: new Audio(require("../src/assets/clickButton.mp3"))
     },
 
     router,

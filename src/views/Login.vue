@@ -13,9 +13,11 @@
       <p>{{ errorMsg }}</p>
     </div>
 
-    <form id="loginForm">
-      <input type="text" name="username" v-model="input.username" placeholder="Username" required=""/>
-      <input type="password" name="password" v-model="input.password" placeholder="Password" required=""/><br><br>
+    <form>
+      <div id="textBox">
+        <input type="text" name="username" v-model="input.username" placeholder="Username" required=""/>
+        <input type="password" name="password" v-model="input.password" placeholder="Password" required=""/><br><br>
+      </div>
       <button type="button" name="loginButton" v-on:click="login()">Login</button>
       <button type="button" name="teacherLogin" v-on:click="teacherLogin()">Teachers</button>
       <br><br>
@@ -35,6 +37,7 @@ export default {
   },
   data() {
     return {
+      wrongInput: new Audio(require("../assets/wrongLogin.mp3")),
       error: false,
       errorMsg: "",
       foundUser: false,
@@ -65,20 +68,28 @@ export default {
 
       this.handleJSON();
 
-        for (let i = 0; i < this.tempStudents.length; i++) {
+      for (let i = 0; i < this.tempStudents.length; i++) {
 
-          let obj = this.tempStudents[i];
+        let obj = this.tempStudents[i];
 
-          if (this.input.username === obj.username && this.input.password === obj.password) {
-            this.foundUser = true;
-            this.$root.currentlyLoggedInUser = this.input.username;
-            this.$emit("authenticated", true);
-            this.$router.replace({name: "secure"});
-            this.playTheme()
-          }
+        if (this.input.username === obj.username && this.input.password === obj.password) {
+
+          this.$root.buttonSound.volume = 0.2
+          this.$root.buttonSound.play()
+
+          this.foundUser = true;
+          this.$root.currentlyLoggedInUser = this.input.username;
+          this.$emit("authenticated", true);
+          this.$router.replace({name: "secure"});
+          this.playTheme()
         }
+      }
 
-      if(!this.foundUser) {
+      if (!this.foundUser) {
+
+        this.wrongInput.volume = 0.2;
+        this.wrongInput.play();
+
         this.error = true;
         this.errorMsg = "Invalid Username and / or Password."
         this.input.username = "";
@@ -87,6 +98,8 @@ export default {
 
     },
     teacherLogin() {
+      this.$root.buttonSound.volume = 0.2
+      this.$root.buttonSound.play()
       this.$router.replace({name: "teacherLogin"})
     },
 
@@ -103,7 +116,7 @@ export default {
 
       }
     },
-    playTheme(){
+    playTheme() {
       this.$root.theme.volume = 0.1;
       this.$root.theme.play()
     }

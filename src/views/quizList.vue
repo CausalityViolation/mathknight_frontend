@@ -58,18 +58,28 @@ export default {
   },
   methods: {
     additionQuiz() {
+      this.$root.buttonSound.volume = 0.2
+      this.$root.buttonSound.play()
       this.$router.replace({name: "addition"});
     },
     subtractionQuiz() {
+      this.$root.buttonSound.volume = 0.2
+      this.$root.buttonSound.play()
       this.$router.replace({name: "subtract"});
     },
     multiplicationQuiz() {
+      this.$root.buttonSound.volume = 0.2
+      this.$root.buttonSound.play()
       this.$router.replace({name: "multiply"});
     },
     divisionQuiz() {
+      this.$root.buttonSound.volume = 0.2
+      this.$root.buttonSound.play()
       this.$router.replace({name: "division"});
     },
     achievementsPage() {
+      this.$root.buttonSound.volume = 0.2
+      this.$root.buttonSound.play()
       this.$router.replace({name: "achievements"});
     },
     unlockQuizForUser() {

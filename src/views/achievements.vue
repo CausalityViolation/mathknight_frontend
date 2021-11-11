@@ -71,10 +71,14 @@ export default {
   methods: {
 
     goBack() {
+      this.$root.buttonSound.volume = 0.2
+      this.$root.buttonSound.play()
       this.$router.replace({name: "quiz"});
     },
 
     goToDoom() {
+      this.$root.buttonSound.volume = 0.2
+      this.$root.buttonSound.play()
       this.$router.replace({name: "hiddenQuiz"});
       this.$root.theme.pause()
     },
