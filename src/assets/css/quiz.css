@@ -16,24 +16,24 @@ h1 {
     text-shadow: black 0 0 10px;
 }
 
-p{
+p {
     font-family: 'MedievalSharp', cursive;
     text-shadow: black 0 0 10px;
     font-size: 25px;
 }
 
-#loggedInUser{
+#loggedInUser {
     text-shadow: black 0 0 10px;
     font-size: 20px;
 }
 
-#score{
+#score {
     padding-top: 1rem;
     padding-right: 0;
     font-size: 20px;
 }
 
-h1 span{
+h1 span {
     background-color: #ffffff10;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -90,22 +90,37 @@ input {
     width: 100%;
 
 }
+
 input[type="text"] {
     width: 300px;
 }
 
 @media (min-width: 768px) {
 
-    #loggedInUser{
+    #loggedInUser {
         position: absolute;
         right: 2rem;
         top: 2rem;
     }
 
-    #score{
+    #score {
         position: absolute;
         right: 3.5rem;
         top: 5rem;
+    }
+
+    #imgBox {
+
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        order: 3;
+    }
+
+    img{
+        width: auto;
+        height: 150px;
+        padding: 5px;
     }
 
 }

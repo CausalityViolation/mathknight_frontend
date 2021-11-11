@@ -1,10 +1,22 @@
 <template>
   <div class="achievement" id="achievement">
-    <h1>{{ currentUser }}'s Achievements</h1>
+    <h1>{{ currentUser }}'s Stats</h1>
     <p>Total answered questions:<br> {{ answeredQuestions }}</p>
     <p>Your total score:<br> {{ studentScore }}</p>
     <p>Correct answers:<br> {{ percentage }}</p>
     <p>Total incorrect answers, including questions left blank: <br>{{ studentWrongAnsQ }} </p>
+    <br>
+
+
+    <h1>Unlocked Achievements:</h1><br>
+
+    <div id="imgBox">
+      <img v-if="this.$root.maxPointsAddition" src="../assets/additionAchi.jpeg">
+      <img v-if="this.$root.maxPointsSubtraction" src="../assets/subtractionAchi.jpeg">
+      <img v-if="this.$root.maxPointsMultiplication" src="../assets/multiplicationAchi.jpg">
+      <img v-if="this.$root.maxPointsDivision" src="../assets/additionAchi.jpeg">
+    </div>
+    <br>
 
     <button type="button" name="back" v-on:click="goBack()">Back</button>
 

@@ -225,14 +225,17 @@ export default {
         this.wrongAnswers++
       }
 
+      if (this.score == 5) {
+        this.$root.maxPointsAddition = true;
+      }
+
       this.showSubmit = false;
       this.addPointsToStudent();
       this.addAnsQToStudent();
       this.addWrongAnsQToStudent();
       this.showScore = true;
       this.showQuiz = false;
-
-      console.log(this.wrongAnswers)
+      this.timerCount = "";
 
     },
 
