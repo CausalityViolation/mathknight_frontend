@@ -49,7 +49,7 @@ export default {
       studentScore: 0,
       studentAnsQ: 0,
       studentWrongAnsQ: 0,
-      percentage: "",
+      percentage: 0,
       percentageWrong: "",
       studentName: [],
       students: []
@@ -91,7 +91,12 @@ export default {
       this.studentWrongAnsQ = this.students.find(x => x.studentName === this.currentUser).studentWrongAns;
 
 
-      this.percentage = Math.round((this.studentScore / this.answeredQuestions) * 100) + "%";
+      if (this.studentScore != 0) {
+        this.percentage = Math.round((this.studentScore / this.answeredQuestions) * 100) + "%";
+      } else {
+        this.percentage = 0;
+      }
+
 
     },
 

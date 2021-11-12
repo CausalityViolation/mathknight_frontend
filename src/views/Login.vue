@@ -72,13 +72,13 @@ export default {
 
         let obj = this.tempStudents[i];
 
-        if (this.input.username === obj.username && this.input.password === obj.password) {
+        if (this.input.username.toUpperCase() === obj.username && this.input.password === obj.password) {
 
           this.$root.buttonSound.volume = 0.2
           this.$root.buttonSound.play()
 
           this.foundUser = true;
-          this.$root.currentlyLoggedInUser = this.input.username;
+          this.$root.currentlyLoggedInUser = this.input.username.toUpperCase();
           this.$emit("authenticated", true);
           this.$router.replace({name: "secure"});
           this.playTheme()
