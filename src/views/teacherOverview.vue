@@ -11,7 +11,7 @@
         {{ student.studentAnsQ }} Wrong Answers:
         {{ student.studentWrongAns }} Age:
         {{ student.studentAge }} Achievement points:
-        {{student.studentAchiPoints}} |
+        {{ student.studentAchiPoints }} |
       </li>
     </ul>
 
@@ -49,6 +49,7 @@
 
 import MainPage from "@/components/mainPage";
 
+
 export default {
   components: {
     MainPage
@@ -85,27 +86,36 @@ export default {
 
     addNewStudentToServer() {
 
-      if (this.input.name == "" || this.input.password || "" || this.input.age == "") {
+
+      if (this.input.name == "" || this.input.password == "" || this.input.age == "") {
         this.replyMessage = "Please fill out all the fields before submitting."
       }
 
-      const axios = require('axios').default;
-      axios.post('http://127.0.0.1:3030/students', {
-        studentName: this.input.name,
-        studentPassword: this.input.password,
-        studentAge: this.input.age
-      })
-          .then((response) => {
-            this.replyMessage = JSON.stringify(response.data);
+      else if(this.students.find(p => p.studentName === this.input.name.toUpperCase())) {
+        this.replyMessage = "Unable to add student. Student already exists."
+      }
 
-            if (this.replyMessage.includes("success")) {
-              this.replyMessage = "Student successfully added to Database"
-            }
-          })
-          .catch(function (error) {
-            console.log(error);
-          })
-          .then(() => this.getFromServer())
+      else {
+
+        const axios = require('axios').default;
+        axios.post('http://127.0.0.1:3030/students', {
+          studentName: this.input.name.toUpperCase(),
+          studentPassword: this.input.password,
+          studentAge: this.input.age
+        })
+            .then((response) => {
+              this.replyMessage = JSON.stringify(response.data);
+
+              if (this.replyMessage.includes("success")) {
+                this.replyMessage = "Student successfully added to Database"
+              }
+            })
+            .catch(function (error) {
+              console.log(error);
+            })
+            .then(() => this.getFromServer())
+
+      }
 
       this.input.name = "";
       this.input.password = "";
@@ -117,7 +127,7 @@ export default {
     resetStudentScore() {
       const axios = require('axios').default;
       axios.put('http://127.0.0.1:3030/students/reset', {
-        studentName: this.input.studentWhoLosesAllPoints
+        studentName: this.input.studentWhoLosesAllPoints.toUpperCase()
       }).then(() => this.getFromServer())
 
       this.input.studentWhoLosesAllPoints = "";
@@ -128,7 +138,7 @@ export default {
       const axios = require('axios').default;
       axios.delete('http://127.0.0.1:3030/students', {
         data: {
-          studentName: this.input.studentWhoGetsDeleted
+          studentName: this.input.studentWhoGetsDeleted.toUpperCase()
         }
       })
           .catch(function (error) {
